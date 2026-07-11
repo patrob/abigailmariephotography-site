@@ -1,0 +1,91 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const heroImage =
+  "https://images.squarespace-cdn.com/content/v1/6331dd9e1b69b852b3d1091a/e604a33d-3bd7-4244-9e23-44de12af639b/805A0961.jpg";
+
+const packages = [
+  {
+    name: "Full Sessions",
+    price: "$400",
+    includes: [
+      "Up to 60 minutes on location",
+      "40 digital images",
+      "Online gallery and print release",
+    ],
+    description:
+      "Full sessions are another great option for updating family photos, for extended family photos, and for getting additional variety and time to capture all that you're hoping for!",
+  },
+  {
+    name: "Mini Sessions",
+    price: "$225",
+    includes: [
+      "Up to 30 minutes on location",
+      "20 digital images",
+      "Online gallery and print release",
+    ],
+    description:
+      "Offered year-round, mini sessions are a great option for updating family photos, photographing a newly engaged couple, or capturing just the kiddos!",
+  },
+  {
+    name: "Lifestyle Sessions",
+    price: "$500",
+    includes: [
+      "90 minutes in client's home",
+      "40 digital images",
+      "Online gallery and print release",
+    ],
+    description:
+      "A lifestyle session captures everyday moments in a beautiful way. Lifestyle sessions are captured in the client's home, with their own environment and memories, making it perfect for newborns and families.",
+  },
+  {
+    name: "Cake Smash & Milestones",
+    price: "$500",
+    includes: [
+      "30 minutes in studio",
+      "12 digital images",
+      "Online gallery and print release",
+    ],
+    description:
+      "Featuring your sweet baby, and a simple, clean backdrop, cake smash and milestone sessions are a great way to do what we all long for with our kids — to pause the moment. These sessions will do just that, and are a fun, sensory play experience for your little!",
+  },
+];
+---
+
+<Layout title="Packages" description="Session pricing and packages for Abigail Marie Photography — full, mini, lifestyle, and cake smash & milestone sessions.">
+  <section class="page-hero">
+    <img src={heroImage} alt="Packages hero" class="hero-image" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="eyebrow">Investment</p>
+      <h1>Packages</h1>
+    </div>
+  </section>
+
+  <section class="packages-section">
+    <div class="container">
+      <p class="packages-note reveal">
+        All packages include a private gallery and print release. Clients get to pick their
+        favorite photos, and have the option of purchasing additional images at $25 per image or
+        5 for $100.
+      </p>
+      <div class="packages-grid">
+        {
+          packages.map((pkg) => (
+            <div class="package-card reveal">
+              <h3>{pkg.name}</h3>
+              <p class="package-price">{pkg.price}</p>
+              <ul class="package-includes">
+                {pkg.includes.map((item) => <li>{item}</li>)}
+              </ul>
+              <p class="package-desc">{pkg.description}</p>
+            </div>
+          ))
+        }
+      </div>
+      <div class="cta-row reveal">
+        <a href="/contact" class="btn btn-rose">Book Your Session</a>
+      </div>
+    </div>
+  </section>
+</Layout>

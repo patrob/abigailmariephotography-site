@@ -1,0 +1,61 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const heroImage =
+  "https://images.squarespace-cdn.com/content/v1/6331dd9e1b69b852b3d1091a/02d1513a-74e7-4bf0-afef-2f11e14c557e/IMG_0865.jpg";
+---
+
+<Layout title="Contact" description="Get in touch with Abigail Marie Photography to book your family, lifestyle, or milestone session in Schertz, TX.">
+  <section class="page-hero">
+    <img src={heroImage} alt="Contact hero" class="hero-image" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="eyebrow">Let's Connect</p>
+      <h1>Contact</h1>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="container contact-grid">
+      <form class="contact-form reveal" action="mailto:info@abigailmariephotography.com" method="post" enctype="text/plain">
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="Name" required />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="Email" required />
+        </div>
+        <div>
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="Subject" />
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="Message" rows="6" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-rose">Send Message</button>
+      </form>
+
+      <div class="contact-info reveal">
+        <h3>Reach Out</h3>
+        <p>
+          <a href="tel:2105426718">(210) 542-6718</a>
+        </p>
+        <p>
+          <a href="mailto:info@abigailmariephotography.com">info@abigailmariephotography.com</a>
+        </p>
+
+        <h3>Location</h3>
+        <p>Schertz, TX &mdash; between San Antonio and New Braunfels</p>
+
+        <h3>Follow Along</h3>
+        <p>
+          <a href="https://www.instagram.com/abigailmariephotos/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <span class="dot">&middot;</span>
+          <a href="https://www.facebook.com/abigailmariephotos/" target="_blank" rel="noopener noreferrer">Facebook</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

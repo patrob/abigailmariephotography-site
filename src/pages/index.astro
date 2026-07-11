@@ -1,0 +1,92 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const heroImage =
+  "https://images.squarespace-cdn.com/content/v1/6331dd9e1b69b852b3d1091a/8bea8244-09a5-4d72-898b-35c4bcbc950c/805A0763.jpg";
+
+const featured = [
+  "https://images.squarespace-cdn.com/content/v1/6331dd9e1b69b852b3d1091a/02d1513a-74e7-4bf0-afef-2f11e14c557e/IMG_0865.jpg",
+  "https://images.squarespace-cdn.com/content/v1/6331dd9e1b69b852b3d1091a/b42d2a93-c92e-45e9-8d66-620f0ec42673/805A0333.JPG",
+  "https://images.squarespace-cdn.com/content/v1/6331dd9e1b69b852b3d1091a/fdd98849-61ab-4f5e-8b52-799b86f9fe1f/805A1137.jpg",
+  "https://images.squarespace-cdn.com/content/v1/6331dd9e1b69b852b3d1091a/e604a33d-3bd7-4244-9e23-44de12af639b/805A0961.jpg",
+];
+
+const aboutImage =
+  "https://images.squarespace-cdn.com/content/v1/6331dd9e1b69b852b3d1091a/f129ae52-cd5d-4bfa-90a5-b04d95f1c65e/Luke-San-Antonio-Photographer40.jpg";
+---
+
+<Layout title="Home">
+  <section class="hero">
+    <img src={heroImage} alt="Family portrait session by Abigail Marie Photography" class="hero-image" loading="eager" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="eyebrow">Abigail Marie Photography</p>
+      <h1>&ldquo;A photograph is the pause button on life.&rdquo;</h1>
+      <div class="cta-row">
+        <a href="/gallery" class="btn btn-light">View the Gallery</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <div class="container about-grid">
+      <div class="about-copy reveal">
+        <span class="eyebrow-label">Meet Your Photographer</span>
+        <h2>Hi, I'm Abbie!</h2>
+        <p>
+          I was born in Arizona, but I got to Texas as soon as I could. I have over 10 years of
+          professional photography experience, and I have fallen in love with capturing family
+          stories. I'm located in the heart of Texas between San Antonio and New Braunfels. I'm the
+          wife of a wonderful man named Patrick, a two-time boy mom, a book lover, and a Jesus
+          follower.
+        </p>
+        <p>
+          At 13, I became fascinated with photography and editing. Then at the age of 15, my mom
+          encouraged me to start doing photo sessions for families we knew. That's where it all
+          began. I'm all about capturing the special moments in people's lives &mdash; it's my thing.
+        </p>
+        <p>
+          Storytelling is my favorite thing to partner with you in, and I am honored to help
+          document your life's most meaningful moments. I work with you to create a truly
+          memorable event, from how it looks to how it feels.
+        </p>
+        <a href="/contact" class="btn">Get in Touch</a>
+      </div>
+      <div class="reveal">
+        <img src={aboutImage} alt="Abbie behind the camera" />
+      </div>
+    </div>
+  </section>
+
+  <section class="verse-section reveal">
+    <div class="container">
+      <blockquote>
+        &ldquo;When a woman gives birth, she has pain because her time has come. But when the child
+        is born, she no longer remembers her distress because of her joy that a child has been born
+        into the world.&rdquo;
+      </blockquote>
+      <cite>John 16:21</cite>
+    </div>
+  </section>
+
+  <section class="featured-section">
+    <div class="container">
+      <div class="section-narrow reveal">
+        <span class="eyebrow-label">Recent Work</span>
+        <h2>Moments Worth Remembering</h2>
+      </div>
+      <div class="featured-grid reveal">
+        {
+          featured.map((src) => (
+            <a href="/gallery">
+              <img src={src} alt="Photography by Abigail Marie Photography" loading="lazy" />
+            </a>
+          ))
+        }
+      </div>
+      <div class="cta-row reveal">
+        <a href="/packages" class="btn btn-rose">See Session Packages</a>
+      </div>
+    </div>
+  </section>
+</Layout>

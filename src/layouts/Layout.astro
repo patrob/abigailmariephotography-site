@@ -1,0 +1,113 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Abigail Marie Photography — family, lifestyle, and milestone photography in Schertz, TX, serving San Antonio and New Braunfels.",
+} = Astro.props;
+
+const LOGO_URL =
+  "https://images.squarespace-cdn.com/content/v1/6331dd9e1b69b852b3d1091a/b4332542-dd7f-4cce-9352-79f9cfe38615/White+%282%29.png";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | Abigail Marie Photography</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={`${title} | Abigail Marie Photography`} />
+    <meta property="og:description" content={description} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="/" class="logo-link">
+          <span class="logo-badge">
+            <img src={LOGO_URL} alt="Abigail Marie Photography" class="logo" />
+          </span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+          <ul class="nav-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/gallery">Gallery</a></li>
+            <li><a href="/packages">Packages</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span class="logo-badge footer-logo-badge">
+          <img src={LOGO_URL} alt="Abigail Marie Photography" class="footer-logo" />
+        </span>
+        <p class="footer-tagline">A photograph is the pause button on life.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/abigailmariephotos/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+          <span class="dot">&middot;</span>
+          <a href="https://www.facebook.com/abigailmariephotos/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
+        </div>
+        <div class="footer-contact">
+          <a href="tel:2105426718">(210) 542-6718</a>
+          <span class="dot">&middot;</span>
+          <a href="mailto:info@abigailmariephotography.com">info@abigailmariephotography.com</a>
+        </div>
+        <p class="footer-location">Schertz, TX &mdash; serving San Antonio &amp; New Braunfels</p>
+        <p class="footer-copy">&copy; {new Date().getFullYear()} Abigail Marie Photography. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      const toggle = document.querySelector(".nav-toggle");
+      const navList = document.querySelector(".nav-list");
+      toggle?.addEventListener("click", () => {
+        const expanded = toggle.getAttribute("aria-expanded") === "true";
+        toggle.setAttribute("aria-expanded", String(!expanded));
+        navList?.classList.toggle("open");
+      });
+
+      // reveal-on-scroll
+      const revealEls = document.querySelectorAll(".reveal");
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              io.unobserve(entry.target);
+            }
+          }
+        },
+        { threshold: 0.15 }
+      );
+      revealEls.forEach((el) => io.observe(el));
+    </script>
+
+    <style is:global>
+      @import "../styles/global.css";
+    </style>
+  </body>
+</html>
