@@ -15,6 +15,7 @@
     "astro": "^7.0.7"
   },
   "devDependencies": {
-    "@playwright/test": "^1.61.1"
+    "@playwright/test": "^1.61.1",
+    "wrangler": "^4.123.0"
   }
 }
