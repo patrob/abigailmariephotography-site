@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "abigailmariephotography-site",
+  "compatibility_date": "2026-08-17",
+  "compatibility_flags": ["global_fetch_strictly_public"],
+  "main": "src/worker.ts",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "routes": [
+    { "pattern": "abigailmariephotography.com", "custom_domain": true },
+    { "pattern": "www.abigailmariephotography.com", "custom_domain": true }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}
