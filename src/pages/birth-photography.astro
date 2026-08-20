@@ -1,0 +1,70 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const heroImage = "/images/805a1137.jpg";
+
+const description = "";
+
+const packages: {
+  name: string;
+  price: string;
+  includes: string[];
+  description: string;
+}[] = [];
+
+const galleryImages: string[] = [];
+---
+
+<Layout title="Birth Photography" description="Birth photography sessions by Abigail Marie Photography in Schertz, TX, serving San Antonio and New Braunfels.">
+  <section class="page-hero">
+    <img src={heroImage} alt="Birth photography hero" class="hero-image" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="eyebrow">Birth Story</p>
+      <h1>Birth Photography</h1>
+    </div>
+  </section>
+
+  <section class="packages-section">
+    <div class="container">
+      {description && <p class="packages-note reveal">{description}</p>}
+
+      {packages.length > 0 && (
+        <div class="packages-grid">
+          {
+            packages.map((pkg) => (
+              <div class="package-card reveal">
+                <h3>{pkg.name}</h3>
+                <p class="package-price">{pkg.price}</p>
+                <ul class="package-includes">
+                  {pkg.includes.map((item) => <li>{item}</li>)}
+                </ul>
+                <p class="package-desc">{pkg.description}</p>
+              </div>
+            ))
+          }
+        </div>
+      )}
+
+      <div class="cta-row reveal">
+        <a href="/contact" class="btn btn-rose">Book Your Session</a>
+      </div>
+    </div>
+  </section>
+
+  {galleryImages.length > 0 && (
+    <section class="gallery-section">
+      <div class="container">
+        <div class="masonry reveal">
+          {
+            galleryImages.map((src, i) => (
+              <figure>
+                <img src={src} alt={`Birth photography portfolio image ${i + 1}`} loading="lazy" />
+              </figure>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  )}
+</Layout>
