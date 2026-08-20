@@ -13,6 +13,9 @@ const featured = [
 
 const aboutImage =
   "/images/about-abbie-maternity.jpg";
+
+const birthTeaserImage =
+  "/images/birth-teaser-maternity-couple.jpg";
 ---
 
 <Layout title="Home">
@@ -58,14 +61,20 @@ const aboutImage =
     </div>
   </section>
 
-  <section class="verse-section reveal">
-    <div class="container">
-      <blockquote>
-        &ldquo;When a woman gives birth, she has pain because her time has come. But when the child
-        is born, she no longer remembers her distress because of her joy that a child has been born
-        into the world.&rdquo;
-      </blockquote>
-      <cite>John 16:21</cite>
+  <section class="birth-teaser-section">
+    <div class="container about-grid">
+      <div class="reveal">
+        <img src={birthTeaserImage} alt="Maternity couple portrait session at golden hour" />
+      </div>
+      <div class="about-copy reveal">
+        <span class="eyebrow-label">New</span>
+        <h2>Birth Photography</h2>
+        <p>
+          From the last golden days of pregnancy to your baby's first breath, I'm honored to walk
+          alongside you and capture the story of how your family grew.
+        </p>
+        <a href="/birth-photography" class="btn btn-rose">Learn More</a>
+      </div>
     </div>
   </section>
 
