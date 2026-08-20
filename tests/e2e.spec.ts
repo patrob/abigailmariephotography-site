@@ -17,7 +17,7 @@ test.describe('Abigail Marie Photography — Full Site E2E', () => {
     await expect(page.locator('.hero img')).toBeVisible();
 
     // About section
-    await expect(page.locator('.about-section h2')).toContainText("Hi, I'm Abbie!");
+    await expect(page.locator('.about-section h2')).toContainText("Hi, I'm Abigail!");
     const aboutText = page.locator('.about-section');
     await expect(aboutText).toContainText('Arizona');
     await expect(aboutText).toContainText('San Antonio');
