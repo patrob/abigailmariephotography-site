@@ -539,6 +539,14 @@ section {
   border-color: var(--color-rose);
 }
 
+.contact-photo {
+  width: 100%;
+  border-radius: 4px;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  margin-bottom: 2rem;
+}
+
 .contact-info h3 {
   font-size: 1.6rem;
   margin-top: 2rem;
