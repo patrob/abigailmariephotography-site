@@ -211,6 +211,13 @@ img {
   color: var(--color-white);
 }
 
+.hero-content p {
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  line-height: 1.75;
+  opacity: 0.92;
+  margin: 1.25rem 0 0;
+}
+
 /* ---------- Sections ---------- */
 
 section {
@@ -446,7 +453,24 @@ section {
   gap: 2rem;
 }
 
+@media (max-width: 720px) {
+  .packages-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.birth-packages-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 960px) {
+  .birth-packages-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .package-card {
+  position: relative;
   background: var(--color-white);
   border: 1px solid var(--color-cream-dark);
   border-radius: 6px;
@@ -460,6 +484,26 @@ section {
   transform: translateY(-4px);
 }
 
+.package-card.popular {
+  border-color: var(--color-rose);
+  box-shadow: 0 20px 40px rgba(176, 111, 111, 0.15);
+}
+
+.package-badge {
+  position: absolute;
+  top: -0.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-rose-dark);
+  color: var(--color-white);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 0.4rem 1.1rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
 .package-card h3 {
   font-size: 1.8rem;
 }
@@ -471,12 +515,21 @@ section {
   margin-bottom: 1rem;
 }
 
+.package-tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--color-charcoal);
+  margin-bottom: 1rem;
+}
+
 .package-includes {
   list-style: none;
   padding: 0;
   margin: 0 0 1.25rem;
   color: var(--color-brown);
   font-size: 0.9rem;
+  text-align: left;
 }
 
 .package-includes li {
@@ -493,9 +546,18 @@ section {
   font-size: 0.95rem;
 }
 
-@media (max-width: 720px) {
-  .packages-grid {
-    grid-template-columns: 1fr;
+.package-closing {
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--color-brown);
+  margin: 1.25rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-cream-dark);
+}
+
+@media (max-width: 520px) {
+  .package-card {
+    padding: 2rem 1.5rem;
   }
 }
 
@@ -572,6 +634,141 @@ section {
   .contact-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ---------- Birth photography page ---------- */
+
+.birth-why-section {
+  background: var(--color-white);
+}
+
+.birth-experience-section {
+  background: var(--color-cream-dark);
+}
+
+.oncall-section {
+  background: var(--color-white);
+}
+
+.section-narrow h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.section-narrow p {
+  color: var(--color-brown);
+  font-size: 1.05rem;
+  text-align: left;
+}
+
+/* ---------- FAQ ---------- */
+
+.faq-section {
+  background: var(--color-cream-dark);
+}
+
+.faq-list {
+  max-width: 780px;
+  margin: 2.5rem auto 0;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--color-brown);
+  border-bottom-color: rgba(107, 93, 79, 0.2);
+  padding: 1.25rem 0;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-icon {
+  flex-shrink: 0;
+  font-size: 1.3rem;
+  color: var(--color-rose-dark);
+  transition: transform 0.25s ease;
+}
+
+.faq-item[open] .faq-icon {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  color: var(--color-brown);
+  margin: 0.9rem 0 0;
+  padding-right: 1.5rem;
+}
+
+.copy-pending {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* ---------- Photo placeholders ---------- */
+
+.photo-placeholder {
+  width: 100%;
+  aspect-ratio: 4/5;
+  border-radius: 4px;
+  background: var(--color-cream-dark);
+  border: 1px dashed var(--color-brown);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--color-brown);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 1.5rem;
+}
+
+/* ---------- Birth closing section ---------- */
+
+.birth-closing-section {
+  position: relative;
+  overflow: hidden;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--color-charcoal);
+  color: var(--color-white);
+}
+
+.birth-closing-content {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.birth-closing-content p {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.2rem, 2.6vw, 1.7rem);
+  line-height: 1.65;
+  margin: 0 0 2rem;
+}
+
+.birth-booking-line {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.8rem;
+  opacity: 0.85;
+  margin-bottom: 2rem;
 }
 
 /* ---------- Footer ---------- */
