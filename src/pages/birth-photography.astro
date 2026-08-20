@@ -6,8 +6,8 @@ const whyImage = "/images/birth/birth-20.jpg";
 const feelImage = "/images/birth/birth-25.jpg";
 const oncallImage = "/images/birth/birth-39.jpg";
 
-// TODO: photo from Patrick — bio portrait for the "Meet Your Birth Photographer" section
-const photographerImage = "";
+// Placeholder: reusing the homepage maternity portrait until Patrick sends a dedicated photo
+const photographerImage = "/images/about-abbie-maternity.jpg";
 
 const closingImage = "/images/birth/birth-33.jpg";
 
@@ -107,7 +107,7 @@ const faqs: { q: string; a?: string; pending?: boolean }[] = [
   },
   {
     q: "What if you miss the birth?",
-    pending: true,
+    a: "I do everything I can to be there — but birth photography is a uniquely demanding niche, and I want to be upfront with you: on rare occasions, I may be unable to attend a birth in person. If that happens, I have a trusted backup photographer (or doula), equipped with my gear, ready to step in and preserve your story in my absence. I personally arrange and pay for my backup, so it's never something you have to coordinate or cover.",
   },
   {
     q: "When should I book?",
@@ -265,17 +265,34 @@ const faqs: { q: string; a?: string; pending?: boolean }[] = [
     <div class="container about-grid">
       <div class="reveal">
         {photographerImage ? (
-          <img src={photographerImage} alt="Abbie, birth photographer at Abigail Marie Photography" />
+          <img src={photographerImage} alt="Abigail, birth photographer at Abigail Marie Photography" />
         ) : (
           <div class="photo-placeholder">Photo coming soon</div>
         )}
       </div>
       <div class="about-copy reveal">
         <span class="eyebrow-label">Meet Your Birth Photographer</span>
-        <p class="copy-pending">
-          Copy pending from Patrick. Framing to build from: birth requires more trust than a
-          family mini session — lean into Abbie being a mom herself, understanding the
-          vulnerability of birth and postpartum, and knowing how to be quiet in that space.
+        <p>
+          Hi, I'm Abigail &mdash; wife, mom, and the person who'll be quietly capturing your birth
+          story.
+        </p>
+        <p>
+          I'm mom to two boys, ages 2 and 4, and most days you'll find me deep in homeschool
+          lessons, chasing them around the backyard, or somewhere in between. My faith is at the
+          center of how I live and how I show up for the families I photograph &mdash; I'm a
+          believer in Jesus and active in my church community, and I carry that same steadiness
+          into every birth I attend.
+        </p>
+        <p>
+          I've walked this path myself, twice. My first son was born at a birth center; my second,
+          at home. I know what it feels like to be in the middle of that intensity &mdash; the
+          waiting, the strength you didn't know you had, the moment it's finally over and your baby
+          is placed in your arms. That's part of why I do this work: I understand the vulnerability
+          of birth and postpartum from the inside, not just from behind a camera.
+        </p>
+        <p>
+          When I'm in your birth space, my goal is simple &mdash; to be present enough to capture
+          what matters, and quiet enough that you forget I'm there at all.
         </p>
       </div>
     </div>
