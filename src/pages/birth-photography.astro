@@ -3,16 +3,108 @@ import Layout from "../layouts/Layout.astro";
 
 const heroImage = "/images/805a1137.jpg";
 
-const description = "";
+// TODO: photo from Patrick — bio portrait for the "Meet Your Birth Photographer" section
+const photographerImage = "";
+
+// TODO: photo from Patrick — full-bleed closing photo
+const closingImage = "";
 
 const packages: {
   name: string;
   price: string;
-  includes: string[];
+  popular?: boolean;
+  tagline: string;
   description: string;
-}[] = [];
+  includes: string[];
+  closing: string;
+}[] = [
+  {
+    name: "Essential Birth",
+    price: "$1,000",
+    tagline: "The moments you'll never want to forget.",
+    description:
+      "For families who want the heart of their birth story preserved in a thoughtfully curated collection.",
+    includes: [
+      "On-call birth photography",
+      "Coverage beginning in active labor",
+      "Coverage through approximately 1 hour postpartum",
+      "Approximately 50 hand-edited images",
+      "Private online gallery",
+      "High-resolution digital downloads",
+      "Print release",
+    ],
+    closing:
+      "A beautiful, intentional collection of the moments that tell the heart of your baby's arrival.",
+  },
+  {
+    name: "Birth Story",
+    price: "$1,400",
+    popular: true,
+    tagline: "From waiting for them to finally holding them.",
+    description:
+      "Your pregnancy and birth belong to the same story. This collection preserves both — the anticipation before you meet and the incredible day that follows.",
+    includes: [
+      "On-call birth photography",
+      "Coverage beginning in active labor",
+      "Coverage through approximately 2 hours postpartum",
+      "Approximately 100 hand-edited birth images",
+      "30-minute maternity mini session",
+      "12 hand-edited maternity images",
+      "Private online galleries",
+      "High-resolution digital downloads",
+      "Print release",
+    ],
+    closing:
+      "For the mama who wants to remember not only the day she met her baby, but the season she spent waiting for them.",
+  },
+  {
+    name: "Heirloom Birth",
+    price: "$1,750",
+    tagline: "The whole story. Nothing important left behind.",
+    description:
+      "From the final weeks of carrying your baby to the first hours of holding them, the Heirloom collection is designed to preserve this chapter as completely as possible.",
+    includes: [
+      "On-call birth photography",
+      "Coverage beginning in active labor",
+      "Coverage through approximately 2 hours postpartum",
+      "Complete curated birth gallery — all of the best images from your story",
+      "Full maternity session",
+      "30 hand-edited maternity images",
+      "Private online galleries",
+      "High-resolution digital downloads",
+      "Print release",
+    ],
+    closing:
+      "The most complete documentation of the journey from waiting for your baby to finally having them in your arms.",
+  },
+];
 
-const galleryImages: string[] = [];
+const faqs: { q: string; a?: string; pending?: boolean }[] = [
+  {
+    q: "What if my labor is really long?",
+    a: "Birth doesn't operate on a session timer. We'll discuss coverage expectations before your due date, but my goal is to document the story — not leave because the clock says your time is up.",
+  },
+  {
+    q: "What if I have a C-section?",
+    a: "Your birth is still a birth — and absolutely worth documenting. Hospital policies determine whether photography is permitted in the operating room, but there is still so much of your baby's story that can be preserved before and immediately afterward.",
+  },
+  {
+    q: "What if I don't want graphic photographs?",
+    a: "You are always in control of what is photographed. We will discuss your preferences beforehand, including whether you'd like images of the actual moment of birth or prefer that I photograph from a more modest perspective.",
+  },
+  {
+    q: "Will you share my birth photographs online?",
+    a: "Your birth is deeply personal. We'll discuss image-sharing permissions separately, and your preferences will be respected.",
+  },
+  {
+    q: "What if you miss the birth?",
+    pending: true,
+  },
+  {
+    q: "When should I book?",
+    a: "Because I accept only a limited number of births each month in order to remain available for every family, earlier is always better. You don't need to know exactly how or where you'll deliver before reaching out.",
+  },
+];
 ---
 
 <Layout title="Birth Photography" description="Birth photography sessions by Abigail Marie Photography in Schertz, TX, serving San Antonio and New Braunfels.">
@@ -20,8 +112,14 @@ const galleryImages: string[] = [];
     <img src={heroImage} alt="Birth photography hero" class="hero-image" />
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <p class="eyebrow">Birth Story</p>
-      <h1>Birth Photography</h1>
+      <p class="eyebrow">Birth Photography</p>
+      <h1>The day you meet them deserves to be remembered.</h1>
+      <p>
+        Birth happens in a blur &mdash; the waiting, the strength you didn't know you had, the
+        hand holding yours, the first cry, the tears, and the moment your baby is finally placed
+        against your chest. Birth photography allows you to be completely present while I quietly
+        preserve the story unfolding around you.
+      </p>
     </div>
   </section>
 
@@ -36,46 +134,146 @@ const galleryImages: string[] = [];
     </div>
   </section>
 
+  <section class="birth-why-section">
+    <div class="container section-narrow reveal">
+      <span class="eyebrow-label">Why Birth Photography?</span>
+      <h2>Because you can't see everything while you're living it.</h2>
+      <p>
+        You will remember pieces. The intensity. Your partner's hand in yours. The relief when you
+        hear that first cry. The weight of your baby against your chest. But there will be so much
+        happening around you that you never get to see. The way your partner looked at you when
+        you weren't watching. The anticipation in the room. The tears when baby arrived. Tiny feet
+        being measured. Grandparents meeting their newest love. The way your baby's hand wrapped
+        around a finger for the very first time. My job isn't to interrupt any of it. It's simply
+        to notice. And then give those moments back to you.
+      </p>
+    </div>
+  </section>
+
+  <section class="birth-experience-section">
+    <div class="container section-narrow reveal">
+      <span class="eyebrow-label">&ldquo;What does having a photographer at my birth actually feel like?&rdquo;</span>
+      <h2>Quiet. Unobtrusive. Completely centered around you.</h2>
+      <p>
+        Birth photography isn't a photo shoot. I won't ask you to look at the camera in the middle
+        of a contraction. I won't pose you or interrupt what's happening to &ldquo;get the
+        shot.&rdquo; I work quietly alongside your birth team, documenting your story as it
+        naturally unfolds. Sometimes that means photographing the big moments. Sometimes it's your
+        partner rubbing your back. Sometimes it's a dark room and a hand wrapped around yours.
+        Sometimes it's the clock on the wall. And when the moment you've been waiting for finally
+        arrives, I'm already there &mdash; camera ready &mdash; so you don't have to think about
+        documenting a single thing.
+      </p>
+    </div>
+  </section>
+
   <section class="packages-section">
     <div class="container">
-      {description && <p class="packages-note reveal">{description}</p>}
+      <div class="section-narrow reveal">
+        <span class="eyebrow-label">Packages</span>
+      </div>
 
-      {packages.length > 0 && (
-        <div class="packages-grid">
-          {
-            packages.map((pkg) => (
-              <div class="package-card reveal">
-                <h3>{pkg.name}</h3>
-                <p class="package-price">{pkg.price}</p>
-                <ul class="package-includes">
-                  {pkg.includes.map((item) => <li>{item}</li>)}
-                </ul>
-                <p class="package-desc">{pkg.description}</p>
-              </div>
-            ))
-          }
-        </div>
-      )}
-
-      <div class="cta-row reveal">
-        <a href="/contact" class="btn btn-rose">Book Your Session</a>
+      <div class="packages-grid birth-packages-grid">
+        {
+          packages.map((pkg) => (
+            <div class={`package-card reveal${pkg.popular ? " popular" : ""}`}>
+              {pkg.popular && <span class="package-badge">Most Popular</span>}
+              <h3>{pkg.name}</h3>
+              <p class="package-price">{pkg.price}</p>
+              <p class="package-tagline">{pkg.tagline}</p>
+              <p class="package-desc">{pkg.description}</p>
+              <ul class="package-includes">
+                {pkg.includes.map((item) => <li>{item}</li>)}
+              </ul>
+              <p class="package-closing">{pkg.closing}</p>
+            </div>
+          ))
+        }
       </div>
     </div>
   </section>
 
-  {galleryImages.length > 0 && (
-    <section class="gallery-section">
-      <div class="container">
-        <div class="masonry reveal">
-          {
-            galleryImages.map((src, i) => (
-              <figure>
-                <img src={src} alt={`Birth photography portfolio image ${i + 1}`} loading="lazy" />
-              </figure>
-            ))
-          }
-        </div>
+  <section class="oncall-section">
+    <div class="container section-narrow reveal">
+      <h2>When will you come?</h2>
+      <p>
+        Babies don't tend to care what's written on the calendar. As your due date approaches, I'll
+        be on call for you 24/7. We'll stay in communication as labor begins, and I'll join you
+        once you're in active labor and remain through your baby's arrival and those first
+        precious hours together. Middle of the night? Weekend? Baby decides today is the day?
+        That's part of the story.
+      </p>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <div class="container section-narrow reveal">
+      <span class="eyebrow-label">FAQ</span>
+      <h2>Common Questions</h2>
+    </div>
+    <div class="container">
+      <div class="faq-list">
+        {
+          faqs.map((item) => (
+            <details class="faq-item reveal">
+              <summary>
+                <span>{item.q}</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </summary>
+              {item.pending ? (
+                <p class="faq-answer copy-pending">
+                  Answer pending — this needs exact, carefully written policy language from
+                  Patrick (covering precipitous births, failure to notify, illness/emergency,
+                  backup photographers, and circumstances outside anyone's control) before this
+                  goes live. Do not publish placeholder wording here.
+                </p>
+              ) : (
+                <p class="faq-answer">{item.a}</p>
+              )}
+            </details>
+          ))
+        }
       </div>
-    </section>
-  )}
+    </div>
+  </section>
+
+  <section class="about-section">
+    <div class="container about-grid">
+      <div class="reveal">
+        {photographerImage ? (
+          <img src={photographerImage} alt="Abbie, birth photographer at Abigail Marie Photography" />
+        ) : (
+          <div class="photo-placeholder">Photo coming soon</div>
+        )}
+      </div>
+      <div class="about-copy reveal">
+        <span class="eyebrow-label">Meet Your Birth Photographer</span>
+        <p class="copy-pending">
+          Copy pending from Patrick. Framing to build from: birth requires more trust than a
+          family mini session — lean into Abbie being a mom herself, understanding the
+          vulnerability of birth and postpartum, and knowing how to be quiet in that space.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="birth-closing-section">
+    {closingImage && (
+      <>
+        <img src={closingImage} alt="" class="hero-image" />
+        <div class="hero-overlay" />
+      </>
+    )}
+    <div class="birth-closing-content">
+      <p>
+        You won't get this day back. Your baby will never be this new again. And although you'll
+        tell them the story of the day they were born countless times, one day you'll be able to
+        show them, too. The room. The waiting. The people who were there. The first time you held
+        them. The way you looked at them. The way they were loved from their very first breath. You
+        bring your baby into the world. I'll preserve the story.
+      </p>
+      <p class="birth-booking-line">Birth photography currently booking for babies due through March 2027.</p>
+      <a href="/contact" class="btn btn-rose">Inquire About Your Birth Story</a>
+    </div>
+  </section>
 </Layout>
