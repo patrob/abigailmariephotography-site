@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SocialFeed from "../components/SocialFeed.astro";
 
 const heroImage =
   "/images/img_0865.jpg";
@@ -53,14 +54,9 @@ const contactImage =
 
         <h3>Location</h3>
         <p>Schertz, TX &mdash; between San Antonio and New Braunfels</p>
-
-        <h3>Follow Along</h3>
-        <p>
-          <a href="https://www.instagram.com/abigailmariephotos/" target="_blank" rel="noopener noreferrer">Instagram</a>
-          <span class="dot">&middot;</span>
-          <a href="https://www.facebook.com/abigailmariephotos/" target="_blank" rel="noopener noreferrer">Facebook</a>
-        </p>
       </div>
     </div>
   </section>
+
+  <SocialFeed />
 </Layout>

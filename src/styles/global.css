@@ -771,6 +771,39 @@ section {
   margin-bottom: 2rem;
 }
 
+/* ---------- Social feed ---------- */
+
+.social-section {
+  background: var(--color-white);
+}
+
+.social-embed {
+  margin-top: 2rem;
+}
+
+.social-placeholder {
+  margin-top: 2rem;
+  padding: 3rem 1.5rem;
+  background: var(--color-cream);
+  border-radius: 6px;
+}
+
+.social-placeholder p {
+  color: var(--color-brown);
+  margin-bottom: 1rem;
+}
+
+.social-links a {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-rose-dark);
+}
+
+.social-links a:hover {
+  color: var(--color-charcoal);
+}
+
 /* ---------- Footer ---------- */
 
 .site-footer {
