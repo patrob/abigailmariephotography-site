@@ -1,13 +1,22 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-const heroImage = "/images/805a1137.jpg";
+const heroImage = "/images/birth/birth-08.jpg";
+const whyImage = "/images/birth/birth-20.jpg";
+const feelImage = "/images/birth/birth-25.jpg";
+const oncallImage = "/images/birth/birth-39.jpg";
 
 // TODO: photo from Patrick — bio portrait for the "Meet Your Birth Photographer" section
 const photographerImage = "";
 
-// TODO: photo from Patrick — full-bleed closing photo
-const closingImage = "";
+const closingImage = "/images/birth/birth-33.jpg";
+
+const galleryImages = [
+  "01", "02", "03", "04", "05", "06", "07", "09", "10",
+  "11", "12", "13", "14", "15", "16", "18", "19", "21",
+  "22", "23", "24", "26", "27", "28", "29", "30", "31",
+  "32", "34", "36", "37", "38", "40", "41", "42",
+].map((n) => `/images/birth/birth-${n}.jpg`);
 
 const packages: {
   name: string;
@@ -135,35 +144,45 @@ const faqs: { q: string; a?: string; pending?: boolean }[] = [
   </section>
 
   <section class="birth-why-section">
-    <div class="container section-narrow reveal">
-      <span class="eyebrow-label">Why Birth Photography?</span>
-      <h2>Because you can't see everything while you're living it.</h2>
-      <p>
-        You will remember pieces. The intensity. Your partner's hand in yours. The relief when you
-        hear that first cry. The weight of your baby against your chest. But there will be so much
-        happening around you that you never get to see. The way your partner looked at you when
-        you weren't watching. The anticipation in the room. The tears when baby arrived. Tiny feet
-        being measured. Grandparents meeting their newest love. The way your baby's hand wrapped
-        around a finger for the very first time. My job isn't to interrupt any of it. It's simply
-        to notice. And then give those moments back to you.
-      </p>
+    <div class="container about-grid">
+      <div class="about-copy reveal">
+        <span class="eyebrow-label">Why Birth Photography?</span>
+        <h2>Because you can't see everything while you're living it.</h2>
+        <p>
+          You will remember pieces. The intensity. Your partner's hand in yours. The relief when
+          you hear that first cry. The weight of your baby against your chest. But there will be
+          so much happening around you that you never get to see. The way your partner looked at
+          you when you weren't watching. The anticipation in the room. The tears when baby
+          arrived. Tiny feet being measured. Grandparents meeting their newest love. The way your
+          baby's hand wrapped around a finger for the very first time. My job isn't to interrupt
+          any of it. It's simply to notice. And then give those moments back to you.
+        </p>
+      </div>
+      <div class="reveal">
+        <img src={whyImage} alt="Partner comforting mother during labor" />
+      </div>
     </div>
   </section>
 
   <section class="birth-experience-section">
-    <div class="container section-narrow reveal">
-      <span class="eyebrow-label">&ldquo;What does having a photographer at my birth actually feel like?&rdquo;</span>
-      <h2>Quiet. Unobtrusive. Completely centered around you.</h2>
-      <p>
-        Birth photography isn't a photo shoot. I won't ask you to look at the camera in the middle
-        of a contraction. I won't pose you or interrupt what's happening to &ldquo;get the
-        shot.&rdquo; I work quietly alongside your birth team, documenting your story as it
-        naturally unfolds. Sometimes that means photographing the big moments. Sometimes it's your
-        partner rubbing your back. Sometimes it's a dark room and a hand wrapped around yours.
-        Sometimes it's the clock on the wall. And when the moment you've been waiting for finally
-        arrives, I'm already there &mdash; camera ready &mdash; so you don't have to think about
-        documenting a single thing.
-      </p>
+    <div class="container about-grid">
+      <div class="reveal">
+        <img src={feelImage} alt="Quiet, unobtrusive view into a birth room" />
+      </div>
+      <div class="about-copy reveal">
+        <span class="eyebrow-label">&ldquo;What does having a photographer at my birth actually feel like?&rdquo;</span>
+        <h2>Quiet. Unobtrusive. Completely centered around you.</h2>
+        <p>
+          Birth photography isn't a photo shoot. I won't ask you to look at the camera in the
+          middle of a contraction. I won't pose you or interrupt what's happening to &ldquo;get
+          the shot.&rdquo; I work quietly alongside your birth team, documenting your story as it
+          naturally unfolds. Sometimes that means photographing the big moments. Sometimes it's
+          your partner rubbing your back. Sometimes it's a dark room and a hand wrapped around
+          yours. Sometimes it's the clock on the wall. And when the moment you've been waiting for
+          finally arrives, I'm already there &mdash; camera ready &mdash; so you don't have to
+          think about documenting a single thing.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -194,15 +213,20 @@ const faqs: { q: string; a?: string; pending?: boolean }[] = [
   </section>
 
   <section class="oncall-section">
-    <div class="container section-narrow reveal">
-      <h2>When will you come?</h2>
-      <p>
-        Babies don't tend to care what's written on the calendar. As your due date approaches, I'll
-        be on call for you 24/7. We'll stay in communication as labor begins, and I'll join you
-        once you're in active labor and remain through your baby's arrival and those first
-        precious hours together. Middle of the night? Weekend? Baby decides today is the day?
-        That's part of the story.
-      </p>
+    <div class="container about-grid">
+      <div class="about-copy reveal">
+        <h2>When will you come?</h2>
+        <p>
+          Babies don't tend to care what's written on the calendar. As your due date approaches,
+          I'll be on call for you 24/7. We'll stay in communication as labor begins, and I'll join
+          you once you're in active labor and remain through your baby's arrival and those first
+          precious hours together. Middle of the night? Weekend? Baby decides today is the day?
+          That's part of the story.
+        </p>
+      </div>
+      <div class="reveal">
+        <img src={oncallImage} alt="A sibling waiting through a long labor" />
+      </div>
     </div>
   </section>
 
@@ -253,6 +277,24 @@ const faqs: { q: string; a?: string; pending?: boolean }[] = [
           family mini session — lean into Abbie being a mom herself, understanding the
           vulnerability of birth and postpartum, and knowing how to be quiet in that space.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-section">
+    <div class="container">
+      <div class="section-narrow reveal">
+        <span class="eyebrow-label">Portfolio</span>
+        <h2>A Broader Look at Birth Work</h2>
+      </div>
+      <div class="masonry reveal">
+        {
+          galleryImages.map((src, i) => (
+            <figure>
+              <img src={src} alt={`Birth photography portfolio image ${i + 1}`} loading="lazy" />
+            </figure>
+          ))
+        }
       </div>
     </div>
   </section>
