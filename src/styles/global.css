@@ -1,13 +1,20 @@
 :root {
-  --color-cream: #faf6f1;
-  --color-cream-dark: #f2ebe1;
-  --color-charcoal: #33302c;
-  --color-brown: #6b5d4f;
-  --color-rose: #c98f8f;
-  --color-rose-dark: #b06f6f;
+  /* Palette: antique gold / blush / mustard / slate blue / sage / dusty blue-grey */
+  --color-cream: #f5e8e5;
+  --color-cream-dark: #e5c5bd;
+  --color-charcoal: #2c3542;
+  --color-brown: #5e718b;
+  --color-accent: #b8862b;
+  --color-accent-dark: #96701f;
+  --color-mustard: #e2a55e;
+  --color-sage: #96aa9a;
+  --color-mist: #b4bfc5;
   --color-white: #ffffff;
+  --font-script: "Alex Brush", cursive;
+  --font-heading: "Cinzel", serif;
   --font-serif: "Cormorant Garamond", serif;
-  --font-sans: "Jost", sans-serif;
+  --font-body: "Cormorant Garamond", serif;
+  --font-sans: "Cormorant Garamond", serif;
   --max-width: 1200px;
 }
 
@@ -29,9 +36,10 @@ body {
 }
 
 h1, h2, h3, h4 {
-  font-family: var(--font-serif);
+  font-family: var(--font-heading);
   font-weight: 500;
-  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   margin: 0 0 0.5em;
 }
 
@@ -73,7 +81,7 @@ img {
 .header-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .logo-badge {
@@ -204,10 +212,13 @@ img {
 }
 
 .hero-content h1 {
-  font-size: clamp(2.25rem, 5vw, 4rem);
-  font-style: italic;
+  font-family: var(--font-script);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-style: normal;
   font-weight: 400;
-  line-height: 1.25;
+  text-transform: none;
+  letter-spacing: normal;
+  line-height: 1.2;
   color: var(--color-white);
 }
 
@@ -235,7 +246,7 @@ section {
   text-transform: uppercase;
   letter-spacing: 0.25em;
   font-size: 0.75rem;
-  color: var(--color-rose-dark);
+  color: var(--color-accent-dark);
   margin-bottom: 1rem;
   display: inline-block;
 }
@@ -297,7 +308,7 @@ section {
   text-transform: uppercase;
   letter-spacing: 0.2em;
   font-size: 0.8rem;
-  color: var(--color-rose-dark);
+  color: var(--color-sage);
 }
 
 /* ---------- Featured grid ---------- */
@@ -369,15 +380,15 @@ section {
   color: var(--color-charcoal);
 }
 
-.btn-rose {
-  background: var(--color-rose);
-  border-color: var(--color-rose);
+.btn-accent {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
   color: var(--color-white);
 }
 
-.btn-rose:hover {
-  background: var(--color-rose-dark);
-  border-color: var(--color-rose-dark);
+.btn-accent:hover {
+  background: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
 }
 
 /* ---------- Page hero (interior pages) ---------- */
@@ -395,8 +406,11 @@ section {
 }
 
 .page-hero .hero-content h1 {
-  font-style: italic;
-  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-family: var(--font-script);
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: clamp(2.75rem, 6vw, 4.5rem);
 }
 
 /* ---------- Gallery ---------- */
@@ -472,7 +486,7 @@ section {
 .package-card {
   position: relative;
   background: var(--color-white);
-  border: 1px solid var(--color-cream-dark);
+  border: 1px solid var(--color-mist);
   border-radius: 6px;
   padding: 2.5rem;
   text-align: center;
@@ -480,13 +494,13 @@ section {
 }
 
 .package-card:hover {
-  box-shadow: 0 20px 40px rgba(51, 48, 44, 0.08);
+  box-shadow: 0 20px 40px rgba(44, 53, 66, 0.08);
   transform: translateY(-4px);
 }
 
 .package-card.popular {
-  border-color: var(--color-rose);
-  box-shadow: 0 20px 40px rgba(176, 111, 111, 0.15);
+  border-color: var(--color-accent);
+  box-shadow: 0 20px 40px rgba(150, 112, 31, 0.15);
 }
 
 .package-badge {
@@ -494,7 +508,7 @@ section {
   top: -0.8rem;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--color-rose-dark);
+  background: var(--color-accent-dark);
   color: var(--color-white);
   font-size: 0.68rem;
   text-transform: uppercase;
@@ -511,7 +525,7 @@ section {
 .package-price {
   font-family: var(--font-serif);
   font-size: 2.25rem;
-  color: var(--color-rose-dark);
+  color: var(--color-mustard);
   margin-bottom: 1rem;
 }
 
@@ -534,7 +548,7 @@ section {
 
 .package-includes li {
   padding: 0.35rem 0;
-  border-top: 1px solid var(--color-cream-dark);
+  border-top: 1px solid var(--color-mist);
 }
 
 .package-includes li:first-child {
@@ -552,7 +566,7 @@ section {
   color: var(--color-brown);
   margin: 1.25rem 0 0;
   padding-top: 1.25rem;
-  border-top: 1px solid var(--color-cream-dark);
+  border-top: 1px solid var(--color-mist);
 }
 
 @media (max-width: 520px) {
@@ -591,7 +605,7 @@ section {
 .contact-form textarea {
   width: 100%;
   padding: 0.85rem 1rem;
-  border: 1px solid var(--color-cream-dark);
+  border: 1px solid var(--color-mist);
   background: var(--color-cream);
   border-radius: 3px;
   font-family: var(--font-sans);
@@ -602,7 +616,7 @@ section {
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
-  border-color: var(--color-rose);
+  border-color: var(--color-accent);
 }
 
 .contact-photo {
@@ -627,7 +641,7 @@ section {
 }
 
 .contact-info a:hover {
-  color: var(--color-rose-dark);
+  color: var(--color-accent-dark);
 }
 
 @media (max-width: 800px) {
@@ -673,7 +687,7 @@ section {
 
 .faq-item {
   border-bottom: 1px solid var(--color-brown);
-  border-bottom-color: rgba(107, 93, 79, 0.2);
+  border-bottom-color: rgba(94, 113, 139, 0.25);
   padding: 1.25rem 0;
 }
 
@@ -695,7 +709,7 @@ section {
 .faq-icon {
   flex-shrink: 0;
   font-size: 1.3rem;
-  color: var(--color-rose-dark);
+  color: var(--color-accent-dark);
   transition: transform 0.25s ease;
 }
 
@@ -797,7 +811,7 @@ section {
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--color-rose-dark);
+  color: var(--color-accent-dark);
 }
 
 .social-links a:hover {
@@ -822,9 +836,9 @@ section {
 }
 
 .footer-tagline {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 1.3rem;
+  font-family: var(--font-script);
+  font-style: normal;
+  font-size: 2rem;
   margin-bottom: 1.5rem;
 }
 
@@ -837,7 +851,7 @@ section {
 
 .footer-social a:hover,
 .footer-contact a:hover {
-  color: var(--color-rose);
+  color: var(--color-sage);
 }
 
 .dot {
