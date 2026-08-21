@@ -1,11 +1,11 @@
 :root {
-  /* Palette: terracotta / blush / mustard / slate blue / sage / dusty blue-grey */
+  /* Palette: antique gold / blush / mustard / slate blue / sage / dusty blue-grey */
   --color-cream: #f5e8e5;
   --color-cream-dark: #e5c5bd;
   --color-charcoal: #2c3542;
   --color-brown: #5e718b;
-  --color-rose: #cf7041;
-  --color-rose-dark: #a65a34;
+  --color-accent: #b8862b;
+  --color-accent-dark: #96701f;
   --color-mustard: #e2a55e;
   --color-sage: #96aa9a;
   --color-mist: #b4bfc5;
@@ -246,7 +246,7 @@ section {
   text-transform: uppercase;
   letter-spacing: 0.25em;
   font-size: 0.75rem;
-  color: var(--color-rose-dark);
+  color: var(--color-accent-dark);
   margin-bottom: 1rem;
   display: inline-block;
 }
@@ -380,15 +380,15 @@ section {
   color: var(--color-charcoal);
 }
 
-.btn-rose {
-  background: var(--color-rose);
-  border-color: var(--color-rose);
+.btn-accent {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
   color: var(--color-white);
 }
 
-.btn-rose:hover {
-  background: var(--color-rose-dark);
-  border-color: var(--color-rose-dark);
+.btn-accent:hover {
+  background: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
 }
 
 /* ---------- Page hero (interior pages) ---------- */
@@ -499,8 +499,8 @@ section {
 }
 
 .package-card.popular {
-  border-color: var(--color-rose);
-  box-shadow: 0 20px 40px rgba(166, 90, 52, 0.15);
+  border-color: var(--color-accent);
+  box-shadow: 0 20px 40px rgba(150, 112, 31, 0.15);
 }
 
 .package-badge {
@@ -508,7 +508,7 @@ section {
   top: -0.8rem;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--color-rose-dark);
+  background: var(--color-accent-dark);
   color: var(--color-white);
   font-size: 0.68rem;
   text-transform: uppercase;
@@ -616,7 +616,7 @@ section {
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
-  border-color: var(--color-rose);
+  border-color: var(--color-accent);
 }
 
 .contact-photo {
@@ -641,7 +641,7 @@ section {
 }
 
 .contact-info a:hover {
-  color: var(--color-rose-dark);
+  color: var(--color-accent-dark);
 }
 
 @media (max-width: 800px) {
@@ -709,7 +709,7 @@ section {
 .faq-icon {
   flex-shrink: 0;
   font-size: 1.3rem;
-  color: var(--color-rose-dark);
+  color: var(--color-accent-dark);
   transition: transform 0.25s ease;
 }
 
@@ -811,7 +811,7 @@ section {
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--color-rose-dark);
+  color: var(--color-accent-dark);
 }
 
 .social-links a:hover {
