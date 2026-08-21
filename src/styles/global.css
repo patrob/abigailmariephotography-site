@@ -10,7 +10,7 @@
   --color-sage: #96aa9a;
   --color-mist: #b4bfc5;
   --color-white: #ffffff;
-  --font-script: "Alex Brush", cursive;
+  --font-script: "Dancing Script", cursive;
   --font-heading: "Cinzel", serif;
   --font-serif: "Cormorant Garamond", serif;
   --font-body: "Cormorant Garamond", serif;
@@ -218,7 +218,7 @@ img {
   font-family: var(--font-script);
   font-size: clamp(3rem, 7vw, 5.5rem);
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   text-transform: none;
   letter-spacing: normal;
   line-height: 1.2;
@@ -426,6 +426,7 @@ section {
 .page-hero .hero-content h1 {
   font-family: var(--font-script);
   font-style: normal;
+  font-weight: 500;
   text-transform: none;
   letter-spacing: normal;
   font-size: clamp(2.75rem, 6vw, 4.5rem);
@@ -856,6 +857,7 @@ section {
 .footer-tagline {
   font-family: var(--font-script);
   font-style: normal;
+  font-weight: 500;
   font-size: 2rem;
   margin-bottom: 1.5rem;
 }
