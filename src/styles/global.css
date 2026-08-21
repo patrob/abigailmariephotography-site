@@ -170,14 +170,17 @@ img {
 
 .hero {
   position: relative;
-  height: 100vh;
-  min-height: 560px;
+  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   overflow: hidden;
   background-color: var(--color-charcoal);
+  /* Vertical padding so on short viewports the section grows to fit the
+     content instead of clipping it under the fixed header / off-screen. */
+  padding: 6rem 0;
 }
 
 .hero-image {
@@ -227,6 +230,18 @@ img {
   line-height: 1.75;
   opacity: 0.92;
   margin: 1.25rem 0 0;
+}
+
+/* Scale the script quote down on phones so the multi-line headline fits
+   the visible viewport without clipping. */
+@media (max-width: 720px) {
+  .hero-content h1 {
+    font-size: clamp(2.5rem, 11vw, 3.5rem);
+  }
+
+  .page-hero .hero-content h1 {
+    font-size: clamp(2.25rem, 9vw, 3.25rem);
+  }
 }
 
 /* ---------- Sections ---------- */
@@ -395,14 +410,17 @@ section {
 
 .page-hero {
   position: relative;
-  height: 46vh;
   min-height: 320px;
+  min-height: max(320px, 46svh);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   overflow: hidden;
   background-color: var(--color-charcoal);
+  /* Grow to fit content (e.g. the birth page's intro paragraph) instead of
+     clipping it, and keep centred content clear of the fixed header. */
+  padding: 7rem 0 3rem;
 }
 
 .page-hero .hero-content h1 {
