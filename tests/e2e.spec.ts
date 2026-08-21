@@ -3,6 +3,7 @@ import { test, expect } from '@playwright/test';
 const NAV_LINKS = [
   { text: 'Home', href: '/' },
   { text: 'Gallery', href: '/gallery' },
+  { text: 'Birth Photography', href: '/birth-photography' },
   { text: 'Packages', href: '/packages' },
   { text: 'Contact', href: '/contact' },
 ];
@@ -23,8 +24,8 @@ test.describe('Abigail Marie Photography — Full Site E2E', () => {
     await expect(aboutText).toContainText('San Antonio');
     await expect(aboutText).toContainText('New Braunfels');
 
-    // Bible verse
-    await expect(page.locator('.verse-section')).toContainText('John 16:21');
+    // Birth photography teaser
+    await expect(page.locator('.birth-teaser-section')).toContainText('Birth Photography');
 
     // Featured grid
     await expect(page.locator('.featured-grid img')).toHaveCount(4);
@@ -82,6 +83,16 @@ test.describe('Abigail Marie Photography — Full Site E2E', () => {
     await expect(page.locator('body')).toContainText('$25 per image');
 
     await page.screenshot({ path: 'test-results/packages-screenshot.png', fullPage: true });
+  });
+
+  test('Birth photography page shows birth content and gallery', async ({ page }) => {
+    await page.goto('/birth-photography');
+    await expect(page).toHaveURL('/birth-photography');
+
+    await expect(page.locator('.page-hero')).toContainText('The day you meet them');
+    await expect(page.locator('.verse-section')).toContainText('John 16:21');
+    await expect(page.locator('.birth-packages-grid .package-card')).toHaveCount(3);
+    await expect(page.locator('.gallery-section .masonry img')).toHaveCount(35);
   });
 
   test('Contact page has form fields and contact info', async ({ page }) => {
