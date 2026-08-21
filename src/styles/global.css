@@ -288,6 +288,14 @@ section {
   font-size: 2.5rem;
 }
 
+/* Personal-intro headings ("Hi, I'm Abbie.") read as a greeting, not a
+   section title — keep them in sentence case rather than the sitewide
+   uppercase heading treatment. */
+.about-section h2 {
+  text-transform: none;
+  letter-spacing: normal;
+}
+
 .about-copy p {
   color: var(--color-brown);
   font-size: 1.05rem;
