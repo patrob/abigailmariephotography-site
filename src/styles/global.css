@@ -38,8 +38,7 @@ body {
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
   font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.01em;
   margin: 0 0 0.5em;
 }
 
@@ -114,8 +113,7 @@ img {
 .nav-list a {
   color: var(--color-white);
   font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.03em;
   transition: opacity 0.2s ease;
 }
 
@@ -207,9 +205,8 @@ img {
 }
 
 .hero-content .eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
   margin-bottom: 1.25rem;
   opacity: 0.85;
 }
@@ -258,9 +255,8 @@ section {
 }
 
 .eyebrow-label {
-  text-transform: uppercase;
-  letter-spacing: 0.25em;
-  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
   color: var(--color-accent-dark);
   margin-bottom: 1rem;
   display: inline-block;
@@ -381,9 +377,8 @@ section {
   padding: 0.9rem 2.25rem;
   border: 1px solid var(--color-charcoal);
   color: var(--color-charcoal);
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  font-size: 0.85rem;
   border-radius: 2px;
   transition: all 0.25s ease;
 }
