@@ -12,6 +12,10 @@ const galleryImages = [
   "/images/805a1137.jpg",
   "/images/805a0961.jpg",
 ];
+
+const maternityImages = Array.from({ length: 21 }, (_, i) =>
+  `/images/maternity/maternity-${String(i + 1).padStart(2, "0")}.jpg`
+);
 ---
 
 <Layout title="Gallery" description="Browse family, lifestyle, and milestone photography sessions by Abigail Marie Photography in Schertz, TX.">
@@ -35,6 +39,29 @@ const galleryImages = [
           ))
         }
       </div>
+    </div>
+  </section>
+
+  <section class="gallery-section maternity-gallery-section">
+    <div class="container">
+      <div class="section-narrow reveal">
+        <span class="eyebrow-label">Maternity Session</span>
+        <h2>Waiting for You</h2>
+      </div>
+      <div class="masonry reveal">
+        {
+          maternityImages.map((src, i) => (
+            <figure>
+              <img src={src} alt={`Maternity session portfolio image ${i + 1}`} loading="lazy" />
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-section">
+    <div class="container">
       <div class="cta-row reveal">
         <a href="/packages" class="btn btn-rose">Book a Session</a>
       </div>
