@@ -21,22 +21,49 @@ const contactImage =
 
   <section class="contact-section">
     <div class="container contact-grid">
-      <form class="contact-form reveal" action="mailto:info@abigailmariephotography.com" method="post" enctype="text/plain">
+      <form class="contact-form reveal" action="/api/contact" method="post" data-contact-form>
+        <div class="contact-form-status" data-contact-status role="status" aria-live="polite" hidden></div>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" class="contact-form-honeypot" aria-hidden="true" />
         <div>
           <label for="name">Name</label>
-          <input type="text" id="name" name="Name" required />
+          <input type="text" id="name" name="name" autocomplete="name" required />
         </div>
         <div>
           <label for="email">Email</label>
-          <input type="email" id="email" name="Email" required />
+          <input type="email" id="email" name="email" autocomplete="email" required />
         </div>
         <div>
-          <label for="subject">Subject</label>
-          <input type="text" id="subject" name="Subject" />
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" autocomplete="tel" />
         </div>
         <div>
-          <label for="message">Message</label>
-          <textarea id="message" name="Message" rows="6" required></textarea>
+          <label for="sessionType">Session Type</label>
+          <select id="sessionType" name="sessionType" required>
+            <option value="">Select a session</option>
+            <option>Family</option>
+            <option>Lifestyle</option>
+            <option>Newborn</option>
+            <option>Maternity</option>
+            <option>Birth Photography</option>
+            <option>Milestone</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label for="sessionDate">Session Date / Due Date</label>
+          <input type="text" id="sessionDate" name="sessionDate" placeholder="Date, due date, or general timing" />
+        </div>
+        <div>
+          <label for="preferredLocation">Preferred Location</label>
+          <input type="text" id="preferredLocation" name="preferredLocation" />
+        </div>
+        <div>
+          <label for="referralSource">How did you hear about me?</label>
+          <input type="text" id="referralSource" name="referralSource" />
+        </div>
+        <div>
+          <label for="message">Tell me what you're dreaming of</label>
+          <textarea id="message" name="message" rows="6" required></textarea>
         </div>
         <button type="submit" class="btn btn-accent">Send Message</button>
       </form>
@@ -59,4 +86,60 @@ const contactImage =
   </section>
 
   <SocialFeed />
+
+  <script>
+    const form = document.querySelector("[data-contact-form]");
+    const status = document.querySelector("[data-contact-status]");
+
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (!(form instanceof HTMLFormElement) || !(status instanceof HTMLElement)) {
+        return;
+      }
+
+      const submitButton = form.querySelector("button[type='submit']");
+      const originalButtonText = submitButton?.textContent ?? "Send Message";
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+
+      status.hidden = true;
+      status.className = "contact-form-status";
+
+      if (submitButton instanceof HTMLButtonElement) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Sending...";
+      }
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+
+        if (!response.ok) {
+          const error = await response.json().catch(() => ({}));
+          throw new Error(error.message || "Unable to send the inquiry.");
+        }
+
+        form.reset();
+        status.textContent = "Thanks for inquiring — I'll get back with you soon.";
+        status.classList.add("contact-form-status--success");
+        status.hidden = false;
+      } catch (error) {
+        status.textContent = "Something went wrong sending your inquiry. Please email info@abigailmariephotography.com directly.";
+        status.classList.add("contact-form-status--error");
+        status.hidden = false;
+      } finally {
+        if (submitButton instanceof HTMLButtonElement) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalButtonText;
+        }
+      }
+    });
+  </script>
 </Layout>

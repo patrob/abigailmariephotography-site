@@ -17,14 +17,14 @@ test.describe('Abigail Marie Photography — Full Site E2E', () => {
     await expect(page.locator('.hero img')).toBeVisible();
 
     // About section
-    await expect(page.locator('.about-section h2')).toContainText("Hi, I'm Abbie!");
+    await expect(page.locator('.about-section h2')).toContainText("Hi, I'm Abbie.");
     const aboutText = page.locator('.about-section');
     await expect(aboutText).toContainText('Arizona');
     await expect(aboutText).toContainText('San Antonio');
     await expect(aboutText).toContainText('New Braunfels');
 
-    // Bible verse
-    await expect(page.locator('.verse-section')).toContainText('John 16:21');
+    // Birth teaser
+    await expect(page.locator('.birth-teaser-section')).toContainText('Birth Photography');
 
     // Featured grid
     await expect(page.locator('.featured-grid img')).toHaveCount(4);
@@ -89,9 +89,16 @@ test.describe('Abigail Marie Photography — Full Site E2E', () => {
     await expect(page).toHaveURL('/contact');
 
     // Form fields
-    await expect(page.locator('input[name="name"], input[name="Name"]')).toBeVisible();
-    await expect(page.locator('input[name="email"], input[name="Email"]')).toBeVisible();
-    await expect(page.locator('textarea[name="message"], textarea[name="Message"]')).toBeVisible();
+    await expect(page.locator('form[action="/api/contact"]')).toBeVisible();
+    await expect(page.locator('input[name="name"]')).toBeVisible();
+    await expect(page.locator('input[name="email"]')).toBeVisible();
+    await expect(page.locator('input[name="phone"]')).toBeVisible();
+    await expect(page.locator('select[name="sessionType"]')).toBeVisible();
+    await expect(page.locator('input[name="sessionDate"]')).toBeVisible();
+    await expect(page.locator('input[name="preferredLocation"]')).toBeVisible();
+    await expect(page.locator('input[name="referralSource"]')).toBeVisible();
+    await expect(page.locator('textarea[name="message"]')).toBeVisible();
+    await expect(page.locator('body')).toContainText("Tell me what you're dreaming of");
 
     // Contact info
     await expect(page.locator('body')).toContainText('info@abigailmariephotography.com');

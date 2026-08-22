@@ -635,6 +635,7 @@ section {
 }
 
 .contact-form input,
+.contact-form select,
 .contact-form textarea {
   width: 100%;
   padding: 0.85rem 1rem;
@@ -647,9 +648,55 @@ section {
 }
 
 .contact-form input:focus,
+.contact-form select:focus,
 .contact-form textarea:focus {
   outline: none;
   border-color: var(--color-accent);
+}
+
+.contact-form select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--color-brown) 50%),
+    linear-gradient(135deg, var(--color-brown) 50%, transparent 50%);
+  background-position:
+    calc(100% - 1.1rem) 50%,
+    calc(100% - 0.75rem) 50%;
+  background-size: 0.35rem 0.35rem, 0.35rem 0.35rem;
+  background-repeat: no-repeat;
+}
+
+.contact-form button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.contact-form-status {
+  padding: 0.9rem 1rem;
+  border-radius: 3px;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+}
+
+.contact-form-status--success {
+  border: 1px solid rgba(113, 129, 95, 0.35);
+  background: rgba(113, 129, 95, 0.12);
+  color: var(--color-brown);
+}
+
+.contact-form-status--error {
+  border: 1px solid rgba(136, 75, 58, 0.35);
+  background: rgba(136, 75, 58, 0.1);
+  color: #884b3a;
+}
+
+.contact-form-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .contact-photo {
