@@ -10,6 +10,7 @@
   --color-sage: #96aa9a;
   --color-mist: #b4bfc5;
   --color-white: #ffffff;
+  --font-script: "Alex Brush", cursive;
   --font-display: "Cormorant Garamond", serif;
   --font-heading: "Cinzel", serif;
   --font-serif: "Cormorant Garamond", serif;
@@ -36,10 +37,10 @@ body {
 }
 
 h1, h2, h3, h4 {
-  font-family: var(--font-heading);
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  font-family: var(--font-script);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
   margin: 0 0 0.5em;
 }
 
@@ -217,12 +218,12 @@ img {
 }
 
 .hero-content h1 {
-  font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 5.5vw, 4rem);
+  font-family: var(--font-script);
+  font-size: clamp(3rem, 7vw, 5.5rem);
   font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  line-height: 1.3;
+  text-transform: none;
+  letter-spacing: normal;
+  line-height: 1.2;
   color: var(--color-white);
 }
 
@@ -237,11 +238,11 @@ img {
    fit the visible viewport without clipping. */
 @media (max-width: 720px) {
   .hero-content h1 {
-    font-size: clamp(2rem, 8vw, 2.75rem);
+    font-size: clamp(2.5rem, 11vw, 3.5rem);
   }
 
   .page-hero .hero-content h1 {
-    font-size: clamp(1.85rem, 7vw, 2.5rem);
+    font-size: clamp(2.25rem, 9vw, 3.25rem);
   }
 }
 
@@ -294,6 +295,7 @@ section {
    section title — keep them in sentence case rather than the sitewide
    uppercase heading treatment. */
 .about-section h2 {
+  font-family: var(--font-heading);
   text-transform: none;
   letter-spacing: normal;
 }
@@ -435,7 +437,11 @@ section {
 }
 
 .page-hero .hero-content h1 {
-  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+  font-family: var(--font-script);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: clamp(2.75rem, 6vw, 4.5rem);
 }
 
 /* ---------- Gallery ---------- */
@@ -865,10 +871,11 @@ section {
 }
 
 .footer-tagline {
-  font-family: var(--font-heading);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 1.6rem;
+  font-family: var(--font-script);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 2rem;
   margin-bottom: 1.5rem;
 }
 
