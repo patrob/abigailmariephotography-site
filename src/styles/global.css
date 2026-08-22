@@ -295,7 +295,7 @@ section {
    section title — keep them in sentence case rather than the sitewide
    uppercase heading treatment. */
 .about-section h2 {
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   text-transform: none;
   letter-spacing: normal;
 }

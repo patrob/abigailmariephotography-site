@@ -4,13 +4,6 @@ import Layout from "../layouts/Layout.astro";
 const heroImage =
   "/images/maternity-hero.jpg";
 
-const featured = [
-  "/images/img_0865.jpg",
-  "/images/805a0333.jpg",
-  "/images/805a1137.jpg",
-  "/images/805a0961.jpg",
-];
-
 const aboutImage =
   "/images/about-abbie-maternity.jpg";
 
@@ -77,24 +70,4 @@ const birthTeaserImage =
     </div>
   </section>
 
-  <section class="featured-section">
-    <div class="container">
-      <div class="section-narrow reveal">
-        <span class="eyebrow-label">Recent Work</span>
-        <h2>Moments Worth Remembering</h2>
-      </div>
-      <div class="featured-grid reveal">
-        {
-          featured.map((src) => (
-            <a href="/gallery">
-              <img src={src} alt="Photography by Abigail Marie Photography" loading="lazy" />
-            </a>
-          ))
-        }
-      </div>
-      <div class="cta-row reveal">
-        <a href="/packages" class="btn btn-accent">See Session Packages</a>
-      </div>
-    </div>
-  </section>
 </Layout>

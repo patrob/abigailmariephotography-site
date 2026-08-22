@@ -8,7 +8,7 @@ const NAV_LINKS = [
 ];
 
 test.describe('Abigail Marie Photography — Full Site E2E', () => {
-  test('Home page loads with hero, about, and featured sections', async ({ page }) => {
+  test('Home page loads with hero, about, and birth teaser sections', async ({ page }) => {
     await page.goto('/');
 
     // Hero section
@@ -26,8 +26,8 @@ test.describe('Abigail Marie Photography — Full Site E2E', () => {
     // Birth teaser
     await expect(page.locator('.birth-teaser-section')).toContainText('Birth Photography');
 
-    // Featured grid
-    await expect(page.locator('.featured-grid img')).toHaveCount(4);
+    // Social/content feature blocks have been intentionally removed.
+    await expect(page.locator('.featured-section')).toHaveCount(0);
 
     // Footer
     await expect(page.locator('.site-footer')).toContainText('Abigail Marie Photography');
