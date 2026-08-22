@@ -7,6 +7,12 @@ const heroImage =
 const aboutImage =
   "/images/about-abbie-maternity.jpg";
 
+const lifestyleTeaserImage =
+  "/images/img_0865.jpg";
+
+const familyTeaserImage =
+  "/images/805a0333.jpg";
+
 const birthTeaserImage =
   "/images/birth/birth-23.jpg";
 ---
@@ -54,7 +60,39 @@ const birthTeaserImage =
     </div>
   </section>
 
-  <section class="birth-teaser-section">
+  <section class="session-teaser-section family-teaser-section">
+    <div class="container about-grid">
+      <div class="reveal">
+        <img src={familyTeaserImage} alt="Siblings gathered around a baby during a family photography session" />
+      </div>
+      <div class="about-copy reveal">
+        <h2>Family Sessions</h2>
+        <p>
+          The giggles, the cuddles, the almost-everyone-looked-at-the-camera moments. Family
+          sessions are relaxed, playful, and focused on the connection you already have.
+        </p>
+        <a href="/packages" class="btn btn-accent">View Family Packages</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="session-teaser-section lifestyle-teaser-section">
+    <div class="container about-grid">
+      <div class="about-copy reveal">
+        <h2>Lifestyle Sessions</h2>
+        <p>
+          Soft, natural portraits for the seasons you want to remember exactly as they felt,
+          from motherhood and milestones to quiet everyday moments with your favorite people.
+        </p>
+        <a href="/contact" class="btn">Plan a Session</a>
+      </div>
+      <div class="reveal">
+        <img src={lifestyleTeaserImage} alt="Mother laughing with her child during a lifestyle photography session" />
+      </div>
+    </div>
+  </section>
+
+  <section class="session-teaser-section birth-teaser-section">
     <div class="container about-grid">
       <div class="reveal">
         <img src={birthTeaserImage} alt="Newborn resting beside birth announcement and ultrasound photos" />

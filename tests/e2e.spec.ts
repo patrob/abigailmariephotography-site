@@ -23,6 +23,10 @@ test.describe('Abigail Marie Photography — Full Site E2E', () => {
     await expect(aboutText).toContainText('San Antonio');
     await expect(aboutText).toContainText('New Braunfels');
 
+    // Service teasers
+    await expect(page.locator('.family-teaser-section')).toContainText('Family Sessions');
+    await expect(page.locator('.lifestyle-teaser-section')).toContainText('Lifestyle Sessions');
+
     // Birth teaser
     await expect(page.locator('.birth-teaser-section')).toContainText('Birth Photography');
 

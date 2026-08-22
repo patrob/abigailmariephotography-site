@@ -316,6 +316,18 @@ section {
   text-align: center;
 }
 
+.session-teaser-section {
+  background: var(--color-cream);
+}
+
+.family-teaser-section {
+  background: var(--color-cream-dark);
+}
+
+.lifestyle-teaser-section {
+  background: var(--color-white);
+}
+
 .birth-teaser-section {
   background: var(--color-cream-dark);
 }
