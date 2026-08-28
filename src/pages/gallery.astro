@@ -4,9 +4,9 @@ import Layout from "../layouts/Layout.astro";
 const heroImage =
   "/images/805a1137.jpg";
 
-const galleries = [
+const sessions = [
   {
-    eyebrow: "Maternity",
+    eyebrow: "Maternity Session",
     title: "Motherhood in the Open Air",
     images: [
       "/images/maternity-hero.jpg",
@@ -23,32 +23,19 @@ const galleries = [
     ],
   },
   {
-    eyebrow: "Family & Lifestyle",
-    title: "The Small Stories",
+    eyebrow: "Lifestyle Newborn Session",
+    title: "Quiet First Days at Home",
     images: [
       "/images/805a0333.jpg",
       "/images/lifestyle-newborn-805a1182.jpg",
-      "/images/kids-field-golden-hour.jpg",
       "/images/img_0865.jpg",
     ],
   },
   {
-    eyebrow: "Birth",
-    title: "The First Hours",
+    eyebrow: "Family Session",
+    title: "Golden Hour in the Field",
     images: [
-      "/images/birth/birth-03.jpg",
-      "/images/birth/birth-05.jpg",
-      "/images/birth/birth-06.jpg",
-      "/images/birth/birth-07.jpg",
-      "/images/birth/birth-08.jpg",
-      "/images/birth/birth-13.jpg",
-      "/images/birth/birth-16.jpg",
-      "/images/birth/birth-20.jpg",
-      "/images/birth/birth-22.jpg",
-      "/images/birth/birth-23.jpg",
-      "/images/birth/birth-28.jpg",
-      "/images/birth/birth-30.jpg",
-      "/images/birth/birth-33.jpg",
+      "/images/kids-field-golden-hour.jpg",
     ],
   },
 ];
@@ -65,18 +52,18 @@ const galleries = [
   </section>
 
   {
-    galleries.map((gallery, galleryIndex) => (
-      <section class:list={["gallery-section", galleryIndex % 2 === 1 && "gallery-section--soft"]}>
+    sessions.map((session, sessionIndex) => (
+      <section class:list={["gallery-section", sessionIndex % 2 === 1 && "gallery-section--soft"]}>
         <div class="container">
           <div class="section-narrow reveal">
-            <span class="eyebrow-label">{gallery.eyebrow}</span>
-            <h2>{gallery.title}</h2>
+            <span class="eyebrow-label">{session.eyebrow}</span>
+            <h2>{session.title}</h2>
           </div>
           <div class="masonry reveal">
             {
-              gallery.images.map((src, i) => (
+              session.images.map((src, i) => (
                 <figure>
-                  <img src={src} alt={`${gallery.eyebrow} portfolio image ${i + 1}`} loading="lazy" />
+                  <img src={src} alt={`${session.eyebrow} portfolio image ${i + 1}`} loading="lazy" />
                 </figure>
               ))
             }
