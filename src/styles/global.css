@@ -600,13 +600,14 @@ section {
 }
 
 .masonry {
-  columns: 3 220px;
-  column-gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  align-items: start;
 }
 
 .masonry figure {
-  margin: 0 0 1rem;
-  break-inside: avoid;
+  margin: 0;
   overflow: hidden;
   border-radius: 3px;
   position: relative;
@@ -614,6 +615,7 @@ section {
 
 .masonry img {
   width: 100%;
+  display: block;
   transition: transform 0.6s ease;
 }
 
@@ -701,13 +703,7 @@ section {
   }
 
   .masonry {
-    columns: 2 160px;
-  }
-}
-
-@media (max-width: 520px) {
-  .masonry {
-    columns: 1;
+    grid-template-columns: 1fr;
   }
 }
 
