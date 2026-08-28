@@ -496,6 +496,10 @@ section {
   background: var(--color-white);
 }
 
+.gallery-section--soft {
+  background: var(--color-cream);
+}
+
 .masonry {
   columns: 3 220px;
   column-gap: 1rem;

@@ -4,9 +4,54 @@ import Layout from "../layouts/Layout.astro";
 const heroImage =
   "/images/805a1137.jpg";
 
-const maternityImages = Array.from({ length: 21 }, (_, i) =>
-  `/images/maternity/maternity-${String(i + 1).padStart(2, "0")}.jpg`
-);
+const galleries = [
+  {
+    eyebrow: "Maternity",
+    title: "Motherhood in the Open Air",
+    images: [
+      "/images/maternity-hero.jpg",
+      "/images/about-abbie-maternity.jpg",
+      "/images/maternity/maternity-03.jpg",
+      "/images/maternity/maternity-05.jpg",
+      "/images/maternity/maternity-07.jpg",
+      "/images/maternity/maternity-08.jpg",
+      "/images/maternity/maternity-12.jpg",
+      "/images/maternity/maternity-13.jpg",
+      "/images/maternity/maternity-14.jpg",
+      "/images/maternity/maternity-20.jpg",
+      "/images/maternity/maternity-21.jpg",
+    ],
+  },
+  {
+    eyebrow: "Family & Lifestyle",
+    title: "The Small Stories",
+    images: [
+      "/images/805a0333.jpg",
+      "/images/lifestyle-newborn-805a1182.jpg",
+      "/images/kids-field-golden-hour.jpg",
+      "/images/img_0865.jpg",
+    ],
+  },
+  {
+    eyebrow: "Birth",
+    title: "The First Hours",
+    images: [
+      "/images/birth/birth-03.jpg",
+      "/images/birth/birth-05.jpg",
+      "/images/birth/birth-06.jpg",
+      "/images/birth/birth-07.jpg",
+      "/images/birth/birth-08.jpg",
+      "/images/birth/birth-13.jpg",
+      "/images/birth/birth-16.jpg",
+      "/images/birth/birth-20.jpg",
+      "/images/birth/birth-22.jpg",
+      "/images/birth/birth-23.jpg",
+      "/images/birth/birth-28.jpg",
+      "/images/birth/birth-30.jpg",
+      "/images/birth/birth-33.jpg",
+    ],
+  },
+];
 ---
 
 <Layout title="Gallery" description="Browse family, lifestyle, and milestone photography sessions by Abigail Marie Photography serving San Antonio and New Braunfels.">
@@ -19,23 +64,27 @@ const maternityImages = Array.from({ length: 21 }, (_, i) =>
     </div>
   </section>
 
-  <section class="gallery-section maternity-gallery-section">
-    <div class="container">
-      <div class="section-narrow reveal">
-        <span class="eyebrow-label">Maternity Session</span>
-        <h2>Aaron & Kelli's Maternity Session</h2>
-      </div>
-      <div class="masonry reveal">
-        {
-          maternityImages.map((src, i) => (
-            <figure>
-              <img src={src} alt={`Maternity session portfolio image ${i + 1}`} loading="lazy" />
-            </figure>
-          ))
-        }
-      </div>
-    </div>
-  </section>
+  {
+    galleries.map((gallery, galleryIndex) => (
+      <section class:list={["gallery-section", galleryIndex % 2 === 1 && "gallery-section--soft"]}>
+        <div class="container">
+          <div class="section-narrow reveal">
+            <span class="eyebrow-label">{gallery.eyebrow}</span>
+            <h2>{gallery.title}</h2>
+          </div>
+          <div class="masonry reveal">
+            {
+              gallery.images.map((src, i) => (
+                <figure>
+                  <img src={src} alt={`${gallery.eyebrow} portfolio image ${i + 1}`} loading="lazy" />
+                </figure>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+    ))
+  }
 
   <section class="gallery-section">
     <div class="container">
