@@ -260,7 +260,9 @@ img {
   }
 
   .hero-content .hero-quote {
-    font-size: 1.45rem;
+    font-size: 2rem;
+    line-height: 1.15;
+    white-space: normal;
   }
 
   .page-hero .hero-content h1 {
