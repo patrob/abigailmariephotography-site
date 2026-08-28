@@ -59,15 +59,6 @@ const heroImage =
           <div class="section-narrow gallery-session-heading reveal">
             <span class="eyebrow-label">{session.eyebrow}</span>
             <h2 id={`${session.id}-title`}>{session.title}</h2>
-            <button
-              type="button"
-              class="session-share-button"
-              data-share-target={`#${session.id}`}
-              data-share-title={session.title}
-            >
-              Share Session
-            </button>
-            <span class="session-copy-status" aria-live="polite"></span>
           </div>
           <div class="masonry reveal">
             {
@@ -90,37 +81,4 @@ const heroImage =
       </div>
     </div>
   </section>
-
-  <script>
-    document.querySelectorAll("[data-share-target]").forEach((button) => {
-      button.addEventListener("click", async () => {
-        const target = button.getAttribute("data-share-target");
-        const title = button.getAttribute("data-share-title") || "Gallery session";
-        const status = button.parentElement?.querySelector(".session-copy-status");
-        const originalLabel = button.textContent || "Share Session";
-        const url = new URL(target || "", window.location.href).href;
-
-        try {
-          if (navigator.share) {
-            await navigator.share({ title, url });
-          } else {
-            await navigator.clipboard.writeText(url);
-          }
-
-          button.textContent = "Link Copied";
-          status && (status.textContent = "Session link copied.");
-          window.setTimeout(() => {
-            button.textContent = originalLabel;
-            status && (status.textContent = "");
-          }, 2200);
-        } catch (error) {
-          if (error instanceof DOMException && error.name === "AbortError") {
-            return;
-          }
-
-          status && (status.textContent = "Could not copy link.");
-        }
-      });
-    });
-  </script>
 </Layout>
