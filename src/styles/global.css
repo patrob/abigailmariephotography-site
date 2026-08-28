@@ -50,11 +50,20 @@ body {
 
 h1, h2, h3, h4 {
   font-family: var(--font-serif);
-  font-style: italic;
   font-weight: 400;
   text-transform: none;
   letter-spacing: normal;
   margin: 0 0 0.5em;
+}
+
+/* Delicate italic accent word within an otherwise upright headline (per
+   Abbie's reference: the small "in" floating beside "SATURATED
+   AUTHENTICITY") — used sparingly on a single short connector word, never
+   the whole heading. */
+.headline-accent {
+  font-style: italic;
+  font-size: 0.6em;
+  font-weight: 400;
 }
 
 p {
@@ -232,7 +241,6 @@ img {
 
 .hero-content h1 {
   font-family: var(--font-serif);
-  font-style: italic;
   font-size: clamp(3rem, 7vw, 5.5rem);
   font-weight: 400;
   text-transform: none;
@@ -459,7 +467,6 @@ section {
 
 .page-hero .hero-content h1 {
   font-family: var(--font-serif);
-  font-style: italic;
   font-weight: 400;
   text-transform: none;
   letter-spacing: normal;
@@ -894,7 +901,6 @@ section {
 
 .footer-tagline {
   font-family: var(--font-serif);
-  font-style: italic;
   font-weight: 400;
   text-transform: none;
   letter-spacing: normal;
