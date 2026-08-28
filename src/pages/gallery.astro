@@ -30,21 +30,29 @@ const heroImage =
         <span class="eyebrow-label">Sessions</span>
         <h2>Browse by Session</h2>
       </div>
-      <nav class="session-index-grid reveal" aria-label="Gallery sessions">
-        {
-          sessions.map((session, sessionIndex) => (
-            <a
-              href={`#${session.id}`}
-              class="session-index-card"
-              aria-label={`View ${session.title} ${sessionIndex + 1}`}
-            >
-              <img src={session.images[0]} alt="" loading="lazy" />
-              <span>{session.eyebrow}</span>
-              <strong>{session.title}</strong>
-            </a>
-          ))
-        }
-      </nav>
+      <div class="session-index-shell reveal" data-session-index-shell>
+        <button class="session-index-arrow session-index-arrow--prev" type="button" aria-label="Previous sessions" data-session-index-prev>
+          <span aria-hidden="true"></span>
+        </button>
+        <nav class="session-index-grid" aria-label="Gallery sessions" data-session-index>
+          {
+            sessions.map((session, sessionIndex) => (
+              <a
+                href={`#${session.id}`}
+                class="session-index-card"
+                aria-label={`View ${session.title} ${sessionIndex + 1}`}
+              >
+                <img src={session.images[0]} alt="" loading="lazy" />
+                <span>{session.eyebrow}</span>
+                <strong>{session.title}</strong>
+              </a>
+            ))
+          }
+        </nav>
+        <button class="session-index-arrow session-index-arrow--next" type="button" aria-label="Next sessions" data-session-index-next>
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
     </div>
   </section>
 
@@ -82,3 +90,33 @@ const heroImage =
     </div>
   </section>
 </Layout>
+
+<script>
+  const shell = document.querySelector("[data-session-index-shell]");
+  const scroller = document.querySelector("[data-session-index]");
+  const previousButton = document.querySelector("[data-session-index-prev]");
+  const nextButton = document.querySelector("[data-session-index-next]");
+
+  if (shell && scroller && previousButton && nextButton) {
+    const updateArrowState = () => {
+      const maxScroll = scroller.scrollWidth - scroller.clientWidth;
+      const hasOverflow = maxScroll > 4;
+      shell.classList.toggle("session-index-shell--scrollable", hasOverflow);
+      previousButton.disabled = !hasOverflow || scroller.scrollLeft <= 4;
+      nextButton.disabled = !hasOverflow || scroller.scrollLeft >= maxScroll - 4;
+    };
+
+    const scrollByCard = (direction) => {
+      const card = scroller.querySelector(".session-index-card");
+      const gap = 14;
+      const distance = card ? card.getBoundingClientRect().width + gap : scroller.clientWidth * 0.75;
+      scroller.scrollBy({ left: distance * direction, behavior: "smooth" });
+    };
+
+    previousButton.addEventListener("click", () => scrollByCard(-1));
+    nextButton.addEventListener("click", () => scrollByCard(1));
+    scroller.addEventListener("scroll", updateArrowState, { passive: true });
+    window.addEventListener("resize", updateArrowState);
+    updateArrowState();
+  }
+</script>
