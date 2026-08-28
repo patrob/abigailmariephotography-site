@@ -89,7 +89,9 @@ test.describe('Abigail Marie Photography — Full Site E2E', () => {
     // Check package details
     await expect(page.locator('body')).toContainText('private gallery and print release');
     await expect(page.locator('body')).toContainText('$25 per image');
+    await expect(page.getByRole('link', { name: 'Book Your Session' })).toBeVisible();
     await expect(page.getByRole('link', { name: 'Looking for Birth Photography?' })).toBeVisible();
+    await expect(page.locator('main')).toContainText(/Book Your Session[\s\S]*Looking for Birth Photography\?/);
 
     await page.screenshot({ path: 'test-results/packages-screenshot.png', fullPage: true });
   });
@@ -99,7 +101,7 @@ test.describe('Abigail Marie Photography — Full Site E2E', () => {
     await expect(page).toHaveURL('/contact');
 
     // Form fields
-    await expect(page.locator('form[action="/api/contact"]')).toBeVisible();
+    await expect(page.locator('form[data-contact-form]')).toBeVisible();
     await expect(page.locator('input[name="name"]')).toBeVisible();
     await expect(page.locator('input[name="email"]')).toBeVisible();
     await expect(page.locator('input[name="phone"]')).toBeVisible();
@@ -109,6 +111,7 @@ test.describe('Abigail Marie Photography — Full Site E2E', () => {
     await expect(page.locator('input[name="referralSource"]')).toBeVisible();
     await expect(page.locator('textarea[name="message"]')).toBeVisible();
     await expect(page.locator('body')).toContainText("Tell me what you're dreaming of");
+    await expect(page.getByRole('button', { name: 'Open Email Draft' })).toBeVisible();
 
     // Contact info
     await expect(page.locator('body')).toContainText('info@abigailmariephotography.com');
