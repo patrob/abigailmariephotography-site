@@ -1,14 +1,20 @@
 :root {
-  /* Palette: antique gold / blush / mustard / slate blue / sage / dusty blue-grey */
-  --color-cream: #f5e8e5;
-  --color-cream-dark: #e5c5bd;
-  --color-charcoal: #2c3542;
-  --color-brown: #5e718b;
-  --color-accent: #b8862b;
-  --color-accent-dark: #96701f;
-  --color-mustard: #e2a55e;
-  --color-sage: #96aa9a;
-  --color-mist: #b4bfc5;
+  /* Palette (2026-08-28 update, per Abbie): deep navy / slate blue / warm tan /
+     dusty rose / warm greige / light gray. --color-accent is the true tan
+     swatch (pairs with dark text); --color-accent-dark is a computed shade of
+     it for solid fills that need white text (buttons, badges) — the bare tan
+     is too light for AA contrast with white-on-fill. --color-rose is a new
+     token, used only where it sits light-on-dark (footer link hover) or as a
+     light background under dark text (verse section) — it fails contrast as
+     its own text color on light backgrounds. */
+  --color-cream: #f0f0f0;
+  --color-cream-dark: #e9e8e5;
+  --color-charcoal: #232e39;
+  --color-brown: #3e5361;
+  --color-accent: #b5a491;
+  --color-accent-dark: #766b5e;
+  --color-rose: #e2d0cf;
+  --color-mist: #e9e8e5;
   --color-white: #ffffff;
   --font-script: "Alex Brush", cursive;
   --font-display: "Cormorant Garamond", serif;
@@ -312,7 +318,10 @@ section {
 }
 
 .verse-section {
-  background: var(--color-cream-dark);
+  /* The one dedicated use of rose (#1 above) — a soft highlight for the
+     site's single quote/verse moment, distinct from the cream-dark used for
+     every other alternating section background. */
+  background: var(--color-rose);
   text-align: center;
 }
 
@@ -335,7 +344,7 @@ section {
   text-transform: uppercase;
   letter-spacing: 0.2em;
   font-size: 0.8rem;
-  color: var(--color-sage);
+  color: var(--color-brown);
 }
 
 /* ---------- Featured grid ---------- */
@@ -409,14 +418,18 @@ section {
 }
 
 .btn-accent {
+  /* Bare tan is too light to carry white text at a legible contrast — pair it
+     with the dark navy body color instead; the darker accent-dark shade on
+     hover is dark enough for white. */
   background: var(--color-accent);
   border-color: var(--color-accent);
-  color: var(--color-white);
+  color: var(--color-charcoal);
 }
 
 .btn-accent:hover {
   background: var(--color-accent-dark);
   border-color: var(--color-accent-dark);
+  color: var(--color-white);
 }
 
 /* ---------- Page hero (interior pages) ---------- */
@@ -525,13 +538,13 @@ section {
 }
 
 .package-card:hover {
-  box-shadow: 0 20px 40px rgba(44, 53, 66, 0.08);
+  box-shadow: 0 20px 40px rgba(35, 46, 57, 0.08);
   transform: translateY(-4px);
 }
 
 .package-card.popular {
-  border-color: var(--color-accent);
-  box-shadow: 0 20px 40px rgba(150, 112, 31, 0.15);
+  border-color: var(--color-accent-dark);
+  box-shadow: 0 20px 40px rgba(118, 107, 94, 0.15);
 }
 
 .package-badge {
@@ -557,7 +570,7 @@ section {
 .package-price {
   font-family: var(--font-serif);
   font-size: 2.25rem;
-  color: var(--color-mustard);
+  color: var(--color-accent-dark);
   margin-bottom: 1rem;
 }
 
@@ -649,7 +662,7 @@ section {
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
-  border-color: var(--color-accent);
+  border-color: var(--color-accent-dark);
 }
 
 .contact-photo {
@@ -720,7 +733,7 @@ section {
 
 .faq-item {
   border-bottom: 1px solid var(--color-brown);
-  border-bottom-color: rgba(94, 113, 139, 0.25);
+  border-bottom-color: rgba(62, 83, 97, 0.25);
   padding: 1.25rem 0;
 }
 
@@ -894,7 +907,9 @@ section {
 
 .footer-social a:hover,
 .footer-contact a:hover {
-  color: var(--color-sage);
+  /* Rose reads clearly here (light text over the deep-navy footer) — see the
+     :root comment for why it's reserved for light-on-dark contexts only. */
+  color: var(--color-rose);
 }
 
 .dot {
