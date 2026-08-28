@@ -1,8 +1,8 @@
 [
   {
-    "id": "lifestyle-newborn-session-1",
-    "eyebrow": "Lifestyle Newborn Session",
-    "title": "Lifestyle Newborn Session",
+    "id": "family-session-1",
+    "eyebrow": "Family Session",
+    "title": "Family Session",
     "images": [
       "https://photos.smugmug.com/photos/i-Qm2WKBg/0/LQZHxXQVwSWSbKFMPQ6nWRTtNSXKMWw4NqxTxF4LZ/X3/i-Qm2WKBg-X3.jpg",
       "https://photos.smugmug.com/photos/i-xFKLvpc/0/LjkbPw9x5m43KsVbJ3QhZ92Twz8GZmN3B7prd88Gj/X3/i-xFKLvpc-X3.jpg",
@@ -77,7 +77,7 @@
     ]
   },
   {
-    "id": "family-session-1",
+    "id": "family-session-2",
     "eyebrow": "Family Session",
     "title": "Family Session",
     "images": [
@@ -113,9 +113,9 @@
     ]
   },
   {
-    "id": "family-session-2",
-    "eyebrow": "Family Session",
-    "title": "Family Session",
+    "id": "maternity-session-2",
+    "eyebrow": "Maternity Session",
+    "title": "Maternity Session",
     "images": [
       "https://photos.smugmug.com/photos/i-fTbJLpJ/0/NPvFtX5jZ8j2kbP9ZGSCtCL4XDggmPDFrLnSWksdk/X3/i-fTbJLpJ-X3.jpg",
       "https://photos.smugmug.com/photos/i-7WLwkV6/0/NhSgZMVbxQmcw2PMpjx3ZQVGDXpHkBnFVV6n7cQWL/X3/i-7WLwkV6-X3.jpg",
@@ -232,9 +232,9 @@
     ]
   },
   {
-    "id": "lifestyle-newborn-session-2",
-    "eyebrow": "Lifestyle Newborn Session",
-    "title": "Lifestyle Newborn Session",
+    "id": "family-session-4",
+    "eyebrow": "Family Session",
+    "title": "Family Session",
     "images": [
       "https://photos.smugmug.com/photos/i-QcV59fc/0/MDRWkqmv5sCMZDtKSVpnqLv8sFSVwZGFMbPw8wmQF/X3/i-QcV59fc-X3.jpg",
       "https://photos.smugmug.com/photos/i-xhdMMCP/0/M7ZHch7Xsh2CCqjX5DLDR989VFcrBLq67rrXQ7fqW/X3/i-xhdMMCP-X3.jpg",
@@ -255,7 +255,7 @@
     ]
   },
   {
-    "id": "maternity-session-2",
+    "id": "maternity-session-3",
     "eyebrow": "Maternity Session",
     "title": "Maternity Session",
     "images": [
@@ -287,7 +287,7 @@
     ]
   },
   {
-    "id": "lifestyle-newborn-session-3",
+    "id": "lifestyle-newborn-session-1",
     "eyebrow": "Lifestyle Newborn Session",
     "title": "Lifestyle Newborn Session",
     "images": [
@@ -352,7 +352,7 @@
     ]
   },
   {
-    "id": "maternity-session-3",
+    "id": "maternity-session-4",
     "eyebrow": "Maternity Session",
     "title": "Maternity Session",
     "images": [
