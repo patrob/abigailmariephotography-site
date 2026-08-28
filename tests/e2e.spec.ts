@@ -8,7 +8,7 @@ const NAV_LINKS = [
 ];
 
 test.describe('Abigail Marie Photography — Full Site E2E', () => {
-  test('Home page loads with hero, about, and birth teaser sections', async ({ page }) => {
+  test('Home page loads with hero, about, and session teaser sections', async ({ page }) => {
     await page.goto('/');
 
     // Hero section
@@ -17,9 +17,8 @@ test.describe('Abigail Marie Photography — Full Site E2E', () => {
     await expect(page.locator('.hero')).toContainText('San Antonio');
     await expect(page.locator('.hero img')).toBeVisible();
 
-    // Session chooser
-    await expect(page.locator('.session-chooser-section')).toContainText('Choose Your Session');
-    await expect(page.locator('.session-chooser-card')).toHaveCount(4);
+    // Session chooser has been intentionally removed.
+    await expect(page.locator('.session-chooser-section')).toHaveCount(0);
 
     // About section
     await expect(page.locator('.about-section h2')).toContainText("Hi, I'm Abbie.");
