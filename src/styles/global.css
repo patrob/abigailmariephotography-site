@@ -309,6 +309,10 @@ section {
   width: 100%;
 }
 
+.about-mobile-photo {
+  display: none;
+}
+
 .about-copy h2 {
   font-size: 2.5rem;
 }
@@ -331,6 +335,15 @@ section {
 @media (max-width: 800px) {
   .about-grid {
     grid-template-columns: 1fr;
+  }
+
+  .about-section .about-desktop-photo {
+    display: none;
+  }
+
+  .about-section .about-mobile-photo {
+    display: block;
+    margin: 1rem 0 1.5rem;
   }
 }
 
