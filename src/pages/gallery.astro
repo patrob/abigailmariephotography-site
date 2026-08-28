@@ -8,6 +8,7 @@ const smugmugBase = "/images/smugmug-new-website-update";
 
 const sessions = [
   {
+    id: "maternity-session-1",
     eyebrow: "Maternity Session",
     title: "Maternity Session",
     images: [
@@ -23,6 +24,7 @@ const sessions = [
     ],
   },
   {
+    id: "family-session-1",
     eyebrow: "Family Session",
     title: "Family Session",
     images: [
@@ -37,6 +39,7 @@ const sessions = [
     ],
   },
   {
+    id: "family-session-2",
     eyebrow: "Family Session",
     title: "Family Session",
     images: [
@@ -48,6 +51,7 @@ const sessions = [
     ],
   },
   {
+    id: "family-session-3",
     eyebrow: "Family Session",
     title: "Family Session",
     images: [
@@ -61,6 +65,7 @@ const sessions = [
     ],
   },
   {
+    id: "milestone-session-1",
     eyebrow: "Milestone Session",
     title: "Milestone Session",
     images: [
@@ -73,6 +78,7 @@ const sessions = [
     ],
   },
   {
+    id: "lifestyle-newborn-session-1",
     eyebrow: "Lifestyle Newborn Session",
     title: "Lifestyle Newborn Session",
     images: [
@@ -94,6 +100,7 @@ const sessions = [
     ],
   },
   {
+    id: "maternity-session-2",
     eyebrow: "Maternity Session",
     title: "Maternity Session",
     images: [
@@ -127,13 +134,51 @@ const sessions = [
     </div>
   </section>
 
+  <section class="gallery-index-section">
+    <div class="container">
+      <div class="section-narrow reveal">
+        <span class="eyebrow-label">Sessions</span>
+        <h2>Browse by Session</h2>
+      </div>
+      <nav class="session-index-grid reveal" aria-label="Gallery sessions">
+        {
+          sessions.map((session, sessionIndex) => (
+            <a
+              href={`#${session.id}`}
+              class="session-index-card"
+              aria-label={`View ${session.title} ${sessionIndex + 1}`}
+            >
+              <img src={session.images[0]} alt="" loading="lazy" />
+              <span>{session.eyebrow}</span>
+              <strong>{session.title}</strong>
+              <small>{session.images.length} images</small>
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </section>
+
   {
     sessions.map((session, sessionIndex) => (
-      <section class:list={["gallery-section", sessionIndex % 2 === 1 && "gallery-section--soft"]}>
+      <section
+        id={session.id}
+        class:list={["gallery-section", sessionIndex % 2 === 1 && "gallery-section--soft"]}
+        aria-labelledby={`${session.id}-title`}
+      >
         <div class="container">
-          <div class="section-narrow reveal">
+          <div class="section-narrow gallery-session-heading reveal">
             <span class="eyebrow-label">{session.eyebrow}</span>
-            <h2>{session.title}</h2>
+            <h2 id={`${session.id}-title`}>{session.title}</h2>
+            <button
+              type="button"
+              class="session-share-button"
+              data-share-target={`#${session.id}`}
+              data-share-title={session.title}
+            >
+              Share Session
+            </button>
+            <span class="session-copy-status" aria-live="polite"></span>
           </div>
           <div class="masonry reveal">
             {
@@ -156,4 +201,37 @@ const sessions = [
       </div>
     </div>
   </section>
+
+  <script>
+    document.querySelectorAll("[data-share-target]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const target = button.getAttribute("data-share-target");
+        const title = button.getAttribute("data-share-title") || "Gallery session";
+        const status = button.parentElement?.querySelector(".session-copy-status");
+        const originalLabel = button.textContent || "Share Session";
+        const url = new URL(target || "", window.location.href).href;
+
+        try {
+          if (navigator.share) {
+            await navigator.share({ title, url });
+          } else {
+            await navigator.clipboard.writeText(url);
+          }
+
+          button.textContent = "Link Copied";
+          status && (status.textContent = "Session link copied.");
+          window.setTimeout(() => {
+            button.textContent = originalLabel;
+            status && (status.textContent = "");
+          }, 2200);
+        } catch (error) {
+          if (error instanceof DOMException && error.name === "AbortError") {
+            return;
+          }
+
+          status && (status.textContent = "Could not copy link.");
+        }
+      });
+    });
+  </script>
 </Layout>
