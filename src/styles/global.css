@@ -1,20 +1,27 @@
 :root {
-  /* Palette (2026-08-28 update, per Abbie): deep navy / slate blue / warm tan /
-     dusty rose / warm greige / light gray. --color-accent is the true tan
-     swatch (pairs with dark text); --color-accent-dark is a computed shade of
-     it for solid fills that need white text (buttons, badges) — the bare tan
-     is too light for AA contrast with white-on-fill. --color-rose is a new
-     token, used only where it sits light-on-dark (footer link hover) or as a
-     light background under dark text (verse section) — it fails contrast as
-     its own text color on light backgrounds. */
-  --color-cream: #f0f0f0;
-  --color-cream-dark: #e9e8e5;
-  --color-charcoal: #232e39;
-  --color-brown: #3e5361;
-  --color-accent: #b5a491;
-  --color-accent-dark: #766b5e;
-  --color-rose: #e2d0cf;
-  --color-mist: #e9e8e5;
+  /* Palette (2026-08-28 second update, per Abbie): sage (primary) / periwinkle
+     (secondary) / creme fraiche (neutral) / reseda + blush (accents). None of
+     Abbie's 5 swatches is dark enough on its own for the site's structural
+     dark roles (body text, header/hero/footer fill) — best of the five,
+     reseda, is only 2.8:1 against white, well under the 4.5:1 AA floor. So
+     --color-charcoal and --color-brown are computed dark shades of the
+     Primary (sage) and Secondary (periwinkle) swatches rather than the bare
+     swatches, keeping the derived neutrals in-family instead of introducing
+     an unrelated hue. Same reasoning as the previous update: --color-accent
+     is the true reseda swatch (pairs with dark text, e.g. --color-charcoal);
+     --color-accent-dark is a further-darkened reseda for solid fills that
+     need white text (buttons, badges) — bare reseda is too light for that.
+     --color-rose is blush, used only where it sits light-on-dark (footer
+     link hover) or as a light background under dark text (verse section) —
+     it fails contrast as its own text color on light backgrounds. */
+  --color-cream: #faf8f3;
+  --color-cream-dark: #e9e9e2;
+  --color-charcoal: #2e2e29;
+  --color-brown: #4b4c53;
+  --color-accent: #969d8a;
+  --color-accent-dark: #62665a;
+  --color-rose: #edccb4;
+  --color-mist: #e9e9e2;
   --color-white: #ffffff;
   --font-script: "Alex Brush", cursive;
   --font-display: "Cormorant Garamond", serif;
@@ -538,13 +545,13 @@ section {
 }
 
 .package-card:hover {
-  box-shadow: 0 20px 40px rgba(35, 46, 57, 0.08);
+  box-shadow: 0 20px 40px rgba(46, 46, 41, 0.08);
   transform: translateY(-4px);
 }
 
 .package-card.popular {
   border-color: var(--color-accent-dark);
-  box-shadow: 0 20px 40px rgba(118, 107, 94, 0.15);
+  box-shadow: 0 20px 40px rgba(98, 102, 90, 0.15);
 }
 
 .package-badge {
@@ -733,7 +740,7 @@ section {
 
 .faq-item {
   border-bottom: 1px solid var(--color-brown);
-  border-bottom-color: rgba(62, 83, 97, 0.25);
+  border-bottom-color: rgba(75, 76, 83, 0.25);
   padding: 1.25rem 0;
 }
 
