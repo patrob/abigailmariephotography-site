@@ -1,14 +1,14 @@
 :root {
-  /* Palette: antique gold / blush / mustard / slate blue / sage / dusty blue-grey */
-  --color-cream: #f5e8e5;
-  --color-cream-dark: #e5c5bd;
-  --color-charcoal: #2c3542;
-  --color-brown: #5e718b;
-  --color-accent: #b8862b;
-  --color-accent-dark: #96701f;
-  --color-mustard: #e2a55e;
+  /* Corrected palette: sage, periwinkle, creme fraiche, reseda, blush. */
+  --color-cream: #faf8f3;
+  --color-cream-dark: #e9e9e2;
+  --color-charcoal: #2e2e29;
+  --color-brown: #4b4c53;
+  --color-accent: #969d8a;
+  --color-accent-dark: #62665a;
+  --color-rose: #edccb4;
   --color-sage: #96aa9a;
-  --color-mist: #b4bfc5;
+  --color-mist: #e9e9e2;
   --color-white: #ffffff;
   --font-display: "Cormorant Garamond", serif;
   --font-heading: "Cinzel", serif;
@@ -607,7 +607,7 @@ section {
 .package-price {
   font-family: var(--font-serif);
   font-size: 2.25rem;
-  color: var(--color-mustard);
+  color: var(--color-accent-dark);
   margin-bottom: 1rem;
 }
 
@@ -971,7 +971,7 @@ section {
 
 .footer-social a:hover,
 .footer-contact a:hover {
-  color: var(--color-sage);
+  color: var(--color-rose);
 }
 
 .dot {
