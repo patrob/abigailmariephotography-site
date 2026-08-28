@@ -15,17 +15,73 @@ const familyTeaserImage =
 
 const birthTeaserImage =
   "/images/birth/birth-23.jpg";
+
+const sessionLinks = [
+  {
+    name: "Families",
+    note: "Playful, connected portraits for the people you love most.",
+    image: familyTeaserImage,
+    href: "/packages",
+  },
+  {
+    name: "Maternity",
+    note: "Soft, natural images for the waiting season.",
+    image: "/images/maternity/maternity-04.jpg",
+    href: "/gallery",
+  },
+  {
+    name: "Lifestyle & Newborn",
+    note: "At-home stories with all the little details left in.",
+    image: lifestyleTeaserImage,
+    href: "/contact",
+  },
+  {
+    name: "Birth",
+    note: "Quiet, reverent coverage for the day your family grows.",
+    image: birthTeaserImage,
+    href: "/birth-photography",
+  },
+];
 ---
 
-<Layout title="Home">
+<Layout title="Home" description="Abigail Marie Photography offers family, maternity, lifestyle, newborn, milestone, and birth photography serving San Antonio and New Braunfels.">
   <section class="hero">
     <img src={heroImage} alt="Maternity portrait session by Abigail Marie Photography" class="hero-image" loading="eager" />
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <p class="eyebrow">Abigail Marie Photography</p>
-      <h1>A photograph is the pause button on life.</h1>
-      <div class="cta-row">
+      <h1>Family, maternity, newborn, and birth photography serving San Antonio and New Braunfels.</h1>
+      <p>
+        Relaxed, natural sessions for families around San Antonio and New Braunfels, photographed
+        with warmth, patience, and an eye for the moments you already love.
+      </p>
+      <div class="cta-row hero-cta-row">
         <a href="/gallery" class="btn btn-light">View the Gallery</a>
+        <a href="/contact" class="btn btn-light btn-subtle-light">Plan a Session</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="session-chooser-section">
+    <div class="container">
+      <div class="section-narrow reveal">
+        <span class="eyebrow-label">Choose Your Session</span>
+        <h2>Start with the season you're in.</h2>
+        <p>
+          From yearly family photos to brand-new babies, each session is shaped around your real
+          life instead of a stiff shot list.
+        </p>
+      </div>
+      <div class="session-chooser-grid">
+        {
+          sessionLinks.map((session) => (
+            <a href={session.href} class="session-chooser-card reveal">
+              <img src={session.image} alt={`${session.name} photography by Abigail Marie Photography`} loading="lazy" />
+              <span>{session.name}</span>
+              <p>{session.note}</p>
+            </a>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -38,9 +94,8 @@ const birthTeaserImage =
         <p>
           I was born in Arizona, but I got to Texas as soon as I could. I have over 10 years of
           professional photography experience, and I have fallen in love with capturing family
-          stories. I'm located in the heart of Texas between San Antonio and New Braunfels. I'm the
-          wife of a wonderful man named Patrick, a two-time boy mom, a book lover, and a Jesus
-          follower.
+          stories. I'm serving families from San Antonio to New Braunfels. I'm the wife of a
+          wonderful man named Patrick, a two-time boy mom, a book lover, and a Jesus follower.
         </p>
         <p>
           At 13, I became fascinated with photography and editing. Then at the age of 15, my mom

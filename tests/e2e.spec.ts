@@ -13,8 +13,13 @@ test.describe('Abigail Marie Photography — Full Site E2E', () => {
 
     // Hero section
     await expect(page.locator('.hero')).toBeVisible();
-    await expect(page.locator('.hero h1')).toContainText('pause button on life');
+    await expect(page.locator('.hero h1')).toContainText('Family, maternity, newborn, and birth photography');
+    await expect(page.locator('.hero')).toContainText('San Antonio');
     await expect(page.locator('.hero img')).toBeVisible();
+
+    // Session chooser
+    await expect(page.locator('.session-chooser-section')).toContainText('Choose Your Session');
+    await expect(page.locator('.session-chooser-card')).toHaveCount(4);
 
     // About section
     await expect(page.locator('.about-section h2')).toContainText("Hi, I'm Abbie.");
@@ -35,7 +40,7 @@ test.describe('Abigail Marie Photography — Full Site E2E', () => {
 
     // Footer
     await expect(page.locator('.site-footer')).toContainText('Abigail Marie Photography');
-    await expect(page.locator('.site-footer')).toContainText('Schertz, TX');
+    await expect(page.locator('.site-footer')).toContainText('Serving San Antonio');
     await expect(page.locator('footer a[href*="instagram.com"]')).toBeVisible();
     await expect(page.locator('footer a[href*="facebook.com"]')).toBeVisible();
     await expect(page.locator('footer a[href="mailto:info@abigailmariephotography.com"]')).toBeVisible();
@@ -84,6 +89,7 @@ test.describe('Abigail Marie Photography — Full Site E2E', () => {
     // Check package details
     await expect(page.locator('body')).toContainText('private gallery and print release');
     await expect(page.locator('body')).toContainText('$25 per image');
+    await expect(page.getByRole('link', { name: 'Looking for Birth Photography?' })).toBeVisible();
 
     await page.screenshot({ path: 'test-results/packages-screenshot.png', fullPage: true });
   });
@@ -107,7 +113,7 @@ test.describe('Abigail Marie Photography — Full Site E2E', () => {
     // Contact info
     await expect(page.locator('body')).toContainText('info@abigailmariephotography.com');
     await expect(page.locator('body')).toContainText('210');
-    await expect(page.locator('body')).toContainText('Schertz');
+    await expect(page.locator('body')).toContainText('New Braunfels');
 
     await page.screenshot({ path: 'test-results/contact-screenshot.png', fullPage: true });
   });
