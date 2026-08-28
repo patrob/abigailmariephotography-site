@@ -1,16 +1,28 @@
 :root {
-  /* Palette: antique gold / blush / mustard / slate blue / sage / dusty blue-grey */
-  --color-cream: #f5e8e5;
-  --color-cream-dark: #e5c5bd;
-  --color-charcoal: #2c3542;
-  --color-brown: #5e718b;
-  --color-accent: #b8862b;
-  --color-accent-dark: #96701f;
-  --color-mustard: #e2a55e;
-  --color-sage: #96aa9a;
-  --color-mist: #b4bfc5;
+  /* Palette (2026-08-28 second update, per Abbie): sage (primary) / periwinkle
+     (secondary) / creme fraiche (neutral) / reseda + blush (accents). None of
+     Abbie's 5 swatches is dark enough on its own for the site's structural
+     dark roles (body text, header/hero/footer fill) — best of the five,
+     reseda, is only 2.8:1 against white, well under the 4.5:1 AA floor. So
+     --color-charcoal and --color-brown are computed dark shades of the
+     Primary (sage) and Secondary (periwinkle) swatches rather than the bare
+     swatches, keeping the derived neutrals in-family instead of introducing
+     an unrelated hue. Same reasoning as the previous update: --color-accent
+     is the true reseda swatch (pairs with dark text, e.g. --color-charcoal);
+     --color-accent-dark is a further-darkened reseda for solid fills that
+     need white text (buttons, badges) — bare reseda is too light for that.
+     --color-rose is blush, used only where it sits light-on-dark (footer
+     link hover) or as a light background under dark text (verse section) —
+     it fails contrast as its own text color on light backgrounds. */
+  --color-cream: #faf8f3;
+  --color-cream-dark: #e9e9e2;
+  --color-charcoal: #2e2e29;
+  --color-brown: #4b4c53;
+  --color-accent: #969d8a;
+  --color-accent-dark: #62665a;
+  --color-rose: #edccb4;
+  --color-mist: #e9e9e2;
   --color-white: #ffffff;
-  --font-script: "Alex Brush", cursive;
   --font-display: "Cormorant Garamond", serif;
   --font-heading: "Cinzel", serif;
   --font-serif: "Cormorant Garamond", serif;
@@ -37,11 +49,21 @@ body {
 }
 
 h1, h2, h3, h4 {
-  font-family: var(--font-script);
+  font-family: var(--font-serif);
   font-weight: 400;
   text-transform: none;
   letter-spacing: normal;
   margin: 0 0 0.5em;
+}
+
+/* Delicate italic accent word within an otherwise upright headline (per
+   Abbie's reference: the small "in" floating beside "SATURATED
+   AUTHENTICITY") — used sparingly on a single short connector word, never
+   the whole heading. */
+.headline-accent {
+  font-style: italic;
+  font-size: 0.6em;
+  font-weight: 400;
 }
 
 p {
@@ -218,7 +240,7 @@ img {
 }
 
 .hero-content h1 {
-  font-family: var(--font-script);
+  font-family: var(--font-serif);
   font-size: clamp(3rem, 7vw, 5.5rem);
   font-weight: 400;
   text-transform: none;
@@ -312,7 +334,10 @@ section {
 }
 
 .verse-section {
-  background: var(--color-cream-dark);
+  /* The one dedicated use of rose (#1 above) — a soft highlight for the
+     site's single quote/verse moment, distinct from the cream-dark used for
+     every other alternating section background. */
+  background: var(--color-rose);
   text-align: center;
 }
 
@@ -335,7 +360,7 @@ section {
   text-transform: uppercase;
   letter-spacing: 0.2em;
   font-size: 0.8rem;
-  color: var(--color-sage);
+  color: var(--color-brown);
 }
 
 /* ---------- Featured grid ---------- */
@@ -409,14 +434,18 @@ section {
 }
 
 .btn-accent {
+  /* Bare tan is too light to carry white text at a legible contrast — pair it
+     with the dark navy body color instead; the darker accent-dark shade on
+     hover is dark enough for white. */
   background: var(--color-accent);
   border-color: var(--color-accent);
-  color: var(--color-white);
+  color: var(--color-charcoal);
 }
 
 .btn-accent:hover {
   background: var(--color-accent-dark);
   border-color: var(--color-accent-dark);
+  color: var(--color-white);
 }
 
 /* ---------- Page hero (interior pages) ---------- */
@@ -437,7 +466,7 @@ section {
 }
 
 .page-hero .hero-content h1 {
-  font-family: var(--font-script);
+  font-family: var(--font-serif);
   font-weight: 400;
   text-transform: none;
   letter-spacing: normal;
@@ -525,13 +554,13 @@ section {
 }
 
 .package-card:hover {
-  box-shadow: 0 20px 40px rgba(44, 53, 66, 0.08);
+  box-shadow: 0 20px 40px rgba(46, 46, 41, 0.08);
   transform: translateY(-4px);
 }
 
 .package-card.popular {
-  border-color: var(--color-accent);
-  box-shadow: 0 20px 40px rgba(150, 112, 31, 0.15);
+  border-color: var(--color-accent-dark);
+  box-shadow: 0 20px 40px rgba(98, 102, 90, 0.15);
 }
 
 .package-badge {
@@ -557,7 +586,7 @@ section {
 .package-price {
   font-family: var(--font-serif);
   font-size: 2.25rem;
-  color: var(--color-mustard);
+  color: var(--color-accent-dark);
   margin-bottom: 1rem;
 }
 
@@ -649,7 +678,7 @@ section {
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
-  border-color: var(--color-accent);
+  border-color: var(--color-accent-dark);
 }
 
 .contact-photo {
@@ -720,7 +749,7 @@ section {
 
 .faq-item {
   border-bottom: 1px solid var(--color-brown);
-  border-bottom-color: rgba(94, 113, 139, 0.25);
+  border-bottom-color: rgba(75, 76, 83, 0.25);
   padding: 1.25rem 0;
 }
 
@@ -871,7 +900,7 @@ section {
 }
 
 .footer-tagline {
-  font-family: var(--font-script);
+  font-family: var(--font-serif);
   font-weight: 400;
   text-transform: none;
   letter-spacing: normal;
@@ -894,7 +923,9 @@ section {
 
 .footer-social a:hover,
 .footer-contact a:hover {
-  color: var(--color-sage);
+  /* Rose reads clearly here (light text over the deep-navy footer) — see the
+     :root comment for why it's reserved for light-on-dark contexts only. */
+  color: var(--color-rose);
 }
 
 .dot {
