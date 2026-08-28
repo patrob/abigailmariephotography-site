@@ -49,6 +49,14 @@ const sessions = [
     </div>
   </section>
 
+  <section class="gallery-section gallery-booking-section">
+    <div class="container">
+      <div class="cta-row reveal">
+        <a href="/packages" class="btn btn-accent">Book a Session</a>
+      </div>
+    </div>
+  </section>
+
   {
     sessions.map((session, sessionIndex) => (
       <section class:list={["gallery-section", sessionIndex % 2 === 1 && "gallery-section--soft"]}>
@@ -71,7 +79,7 @@ const sessions = [
     ))
   }
 
-  <section class="gallery-section">
+  <section class="gallery-section gallery-booking-section">
     <div class="container">
       <div class="cta-row reveal">
         <a href="/packages" class="btn btn-accent">Book a Session</a>

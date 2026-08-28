@@ -515,6 +515,14 @@ section {
   background: var(--color-cream);
 }
 
+.gallery-booking-section {
+  padding: 3rem 0;
+}
+
+.gallery-booking-section .cta-row {
+  margin-top: 0;
+}
+
 .masonry {
   columns: 3 220px;
   column-gap: 1rem;
