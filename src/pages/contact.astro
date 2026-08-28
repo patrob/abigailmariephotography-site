@@ -25,6 +25,10 @@ const contactEmail =
     <div class="container contact-grid">
       <form class="contact-form reveal" data-contact-form>
         <div class="contact-form-status" data-contact-status role="status" aria-live="polite" hidden></div>
+        <div class="contact-form-honeypot" aria-hidden="true">
+          <label for="website">Website</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+        </div>
         <div>
           <label for="name">Name</label>
           <input type="text" id="name" name="name" autocomplete="name" required />
@@ -66,7 +70,7 @@ const contactEmail =
           <label for="message">Tell me what you're dreaming of</label>
           <textarea id="message" name="message" rows="6" required></textarea>
         </div>
-        <button type="submit" class="btn btn-accent">Open Email Draft</button>
+        <button type="submit" class="btn btn-accent">Send Inquiry</button>
       </form>
 
       <div class="contact-info reveal">
@@ -87,40 +91,52 @@ const contactEmail =
   </section>
 
   <script>
-    const contactEmail = "info@abigailmariephotography.com";
     const form = document.querySelector("[data-contact-form]");
     const status = document.querySelector("[data-contact-status]");
 
-    form?.addEventListener("submit", (event) => {
+    form?.addEventListener("submit", async (event) => {
       event.preventDefault();
 
       if (!(form instanceof HTMLFormElement) || !(status instanceof HTMLElement)) {
         return;
       }
 
+      const submitButton = form.querySelector('button[type="submit"]');
       const formData = new FormData(form);
-      const field = (name) => String(formData.get(name) || "").trim();
-      const name = field("name");
-      const subject = `Photography inquiry from ${name || "website visitor"}`;
-      const body = [
-        `Name: ${name}`,
-        `Email: ${field("email")}`,
-        `Phone: ${field("phone") || "Not provided"}`,
-        `Session type: ${field("sessionType")}`,
-        `Session Date / Due Date: ${field("sessionDate") || "Not provided"}`,
-        `Preferred location: ${field("preferredLocation") || "Not provided"}`,
-        `How did you hear about me?: ${field("referralSource") || "Not provided"}`,
-        "",
-        "Tell me what you're dreaming of:",
-        field("message"),
-      ].join("\n");
+      const payload = Object.fromEntries(formData.entries());
 
       status.className = "contact-form-status";
-      status.textContent = "Your email app should open with this inquiry ready to send.";
-      status.classList.add("contact-form-status--success");
+      status.textContent = "Sending your inquiry...";
       status.hidden = false;
+      if (submitButton instanceof HTMLButtonElement) {
+        submitButton.disabled = true;
+      }
 
-      window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      try {
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+          throw new Error(result?.error || "The form could not be sent. Please try again.");
+        }
+
+        form.reset();
+        status.textContent = "Thank you. Your inquiry has been sent.";
+        status.classList.add("contact-form-status--success");
+      } catch (error) {
+        status.textContent = error instanceof Error
+          ? error.message
+          : "The form could not be sent. Please try again.";
+        status.classList.add("contact-form-status--error");
+      } finally {
+        if (submitButton instanceof HTMLButtonElement) {
+          submitButton.disabled = false;
+        }
+      }
     });
   </script>
 </Layout>

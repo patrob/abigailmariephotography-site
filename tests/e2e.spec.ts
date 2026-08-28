@@ -13,7 +13,8 @@ test.describe('Abigail Marie Photography — Full Site E2E', () => {
 
     // Hero section
     await expect(page.locator('.hero')).toBeVisible();
-    await expect(page.locator('.hero h1')).toContainText('Family, maternity, newborn, and birth photography');
+    await expect(page.locator('.hero h1')).toContainText('A photograph is the pause button on life.');
+    await expect(page.locator('.hero')).toContainText('families');
     await expect(page.locator('.hero')).toContainText('San Antonio');
     await expect(page.locator('.hero img')).toBeVisible();
 
@@ -110,7 +111,7 @@ test.describe('Abigail Marie Photography — Full Site E2E', () => {
     await expect(page.locator('input[name="referralSource"]')).toBeVisible();
     await expect(page.locator('textarea[name="message"]')).toBeVisible();
     await expect(page.locator('body')).toContainText("Tell me what you're dreaming of");
-    await expect(page.getByRole('button', { name: 'Open Email Draft' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Send Inquiry' })).toBeVisible();
 
     // Contact info
     await expect(page.locator('body')).toContainText('info@abigailmariephotography.com');
