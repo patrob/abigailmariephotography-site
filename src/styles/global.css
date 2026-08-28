@@ -10,7 +10,6 @@
   --color-sage: #96aa9a;
   --color-mist: #b4bfc5;
   --color-white: #ffffff;
-  --font-script: "Alex Brush", cursive;
   --font-display: "Cormorant Garamond", serif;
   --font-heading: "Cinzel", serif;
   --font-serif: "Cormorant Garamond", serif;
@@ -37,7 +36,8 @@ body {
 }
 
 h1, h2, h3, h4 {
-  font-family: var(--font-script);
+  font-family: var(--font-display);
+  font-style: italic;
   font-weight: 400;
   text-transform: none;
   letter-spacing: normal;
@@ -218,12 +218,13 @@ img {
 }
 
 .hero-content h1 {
-  font-family: var(--font-script);
-  font-size: clamp(2.9rem, 6.5vw, 5.25rem);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(2.45rem, 5.5vw, 4.25rem);
   font-weight: 400;
   text-transform: none;
   letter-spacing: normal;
-  line-height: 1.2;
+  line-height: 1.25;
   color: var(--color-white);
 }
 
@@ -245,15 +246,15 @@ img {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* Scale the hero quote down slightly on phones so multi-line headlines
+/* Scale the hero headline down slightly on phones so multi-line text
    fit the visible viewport without clipping. */
 @media (max-width: 720px) {
   .hero-content h1 {
-    font-size: clamp(2.5rem, 11vw, 3.5rem);
+    font-size: clamp(2.1rem, 8vw, 2.9rem);
   }
 
   .page-hero .hero-content h1 {
-    font-size: clamp(2.25rem, 9vw, 3.25rem);
+    font-size: clamp(1.95rem, 7vw, 2.65rem);
   }
 }
 
@@ -307,6 +308,7 @@ section {
    uppercase heading treatment. */
 .about-section h2 {
   font-family: var(--font-display);
+  font-style: italic;
   text-transform: none;
   letter-spacing: normal;
 }
@@ -470,11 +472,12 @@ section {
 }
 
 .page-hero .hero-content h1 {
-  font-family: var(--font-script);
+  font-family: var(--font-display);
+  font-style: italic;
   font-weight: 400;
   text-transform: none;
   letter-spacing: normal;
-  font-size: clamp(2.75rem, 6vw, 4.5rem);
+  font-size: clamp(2.3rem, 4.8vw, 3.5rem);
 }
 
 /* ---------- Gallery ---------- */
@@ -930,11 +933,12 @@ section {
 }
 
 .footer-tagline {
-  font-family: var(--font-script);
+  font-family: var(--font-display);
+  font-style: italic;
   font-weight: 400;
   text-transform: none;
   letter-spacing: normal;
-  font-size: 2rem;
+  font-size: 1.7rem;
   margin-bottom: 1.5rem;
 }
 
