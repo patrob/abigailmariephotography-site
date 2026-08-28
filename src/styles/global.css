@@ -637,6 +637,12 @@ section {
   }
 }
 
+@media (max-width: 520px) {
+  .masonry {
+    columns: 1;
+  }
+}
+
 /* ---------- Packages ---------- */
 
 .packages-section {
