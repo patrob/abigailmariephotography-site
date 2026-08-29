@@ -1,33 +1,37 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import SocialFeed from "../components/SocialFeed.astro";
 
 const heroImage =
   "/images/maternity-hero.jpg";
 
-const featured = [
-  "/images/img_0865.jpg",
-  "/images/805a0333.jpg",
-  "/images/805a1137.jpg",
-  "/images/805a0961.jpg",
-];
-
 const aboutImage =
   "/images/about-abbie-maternity.jpg";
+
+const lifestyleTeaserImage =
+  "/images/lifestyle-newborn-805a1182.jpg";
+
+const familyTeaserImage =
+  "/images/805a0333.jpg";
 
 const birthTeaserImage =
   "/images/birth/birth-23.jpg";
 ---
 
-<Layout title="Home">
+<Layout title="Home" description="Abigail Marie Photography offers family, maternity, lifestyle, newborn, milestone, and birth photography serving San Antonio and New Braunfels.">
   <section class="hero">
     <img src={heroImage} alt="Maternity portrait session by Abigail Marie Photography" class="hero-image" loading="eager" />
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <p class="eyebrow">Abigail Marie Photography</p>
-      <h1>A photograph is the pause button on life.</h1>
-      <div class="cta-row">
+      <h1 class="hero-quote">A photograph is the pause button on life.</h1>
+      <p>
+        Relaxed, natural portrait and birth photography for families around the San Antonio and
+        New Braunfels areas.
+      </p>
+      <div class="cta-row hero-cta-row">
         <a href="/gallery" class="btn btn-light">View the Gallery</a>
+        <a href="/birth-photography" class="btn btn-light">Birth Photography</a>
+        <a href="/contact" class="btn btn-light btn-subtle-light">Plan a Session</a>
       </div>
     </div>
   </section>
@@ -37,12 +41,16 @@ const birthTeaserImage =
       <div class="about-copy reveal">
         <span class="eyebrow-label">Meet Your Photographer</span>
         <h2>Hi, I'm Abbie.</h2>
+        <img
+          src={aboutImage}
+          alt="Abbie, owner and photographer of Abigail Marie Photography"
+          class="about-mobile-photo"
+        />
         <p>
           I was born in Arizona, but I got to Texas as soon as I could. I have over 10 years of
           professional photography experience, and I have fallen in love with capturing family
-          stories. I'm located in the heart of Texas between San Antonio and New Braunfels. I'm the
-          wife of a wonderful man named Patrick, a two-time boy mom, a book lover, and a Jesus
-          follower.
+          stories. I'm serving families from San Antonio to New Braunfels. I'm the wife of a
+          wonderful man named Patrick, a two-time boy mom, a book lover, and a Jesus follower.
         </p>
         <p>
           At 13, I became fascinated with photography and editing. Then at the age of 15, my mom
@@ -56,13 +64,45 @@ const birthTeaserImage =
         </p>
         <a href="/contact" class="btn">Get in Touch</a>
       </div>
-      <div class="reveal">
+      <div class="about-desktop-photo reveal">
         <img src={aboutImage} alt="Abbie, owner and photographer of Abigail Marie Photography" />
       </div>
     </div>
   </section>
 
-  <section class="birth-teaser-section">
+  <section class="session-teaser-section family-teaser-section">
+    <div class="container about-grid">
+      <div class="reveal">
+        <img src={familyTeaserImage} alt="Siblings gathered around a baby during a family photography session" />
+      </div>
+      <div class="about-copy reveal">
+        <h2>Family Sessions</h2>
+        <p>
+          The giggles, the cuddles, the almost-everyone-looked-at-the-camera moments. Family
+          sessions are relaxed, playful, and focused on the connection you already have.
+        </p>
+        <a href="/packages" class="btn btn-accent">View Family Packages</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="session-teaser-section lifestyle-teaser-section">
+    <div class="container about-grid">
+      <div class="about-copy reveal">
+        <h2>Lifestyle Sessions</h2>
+        <p>
+          Soft, natural portraits for the seasons you want to remember exactly as they felt,
+          from motherhood and milestones to quiet everyday moments with your favorite people.
+        </p>
+        <a href="/gallery" class="btn">Plan a Session</a>
+      </div>
+      <div class="reveal">
+        <img src={lifestyleTeaserImage} alt="Parents cuddling their newborn during a lifestyle photography session" />
+      </div>
+    </div>
+  </section>
+
+  <section class="session-teaser-section birth-teaser-section">
     <div class="container about-grid">
       <div class="reveal">
         <img src={birthTeaserImage} alt="Newborn resting beside birth announcement and ultrasound photos" />
@@ -78,26 +118,4 @@ const birthTeaserImage =
     </div>
   </section>
 
-  <section class="featured-section">
-    <div class="container">
-      <div class="section-narrow reveal">
-        <span class="eyebrow-label">Recent Work</span>
-        <h2>Moments Worth Remembering</h2>
-      </div>
-      <div class="featured-grid reveal">
-        {
-          featured.map((src) => (
-            <a href="/gallery">
-              <img src={src} alt="Photography by Abigail Marie Photography" loading="lazy" />
-            </a>
-          ))
-        }
-      </div>
-      <div class="cta-row reveal">
-        <a href="/packages" class="btn btn-accent">See Session Packages</a>
-      </div>
-    </div>
-  </section>
-
-  <SocialFeed />
 </Layout>
