@@ -624,6 +624,10 @@ section {
   gap: 1.25rem;
 }
 
+.contact-form .btn {
+  justify-self: start;
+}
+
 .contact-form label {
   display: block;
   font-family: var(--font-heading);
