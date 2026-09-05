@@ -208,8 +208,8 @@ test.describe('Abigail Marie Photography — Full Site E2E', () => {
     await expect(page.locator('.session-index-card[href="/gallery/family-session-7"]')).toHaveCount(0);
     await expect(page.locator('.session-index-card[href="/gallery/couples-session-2"]')).toHaveCount(0);
     await expect(page.locator('.session-index-card strong').nth(0)).toContainText('Hentges Lifestyle Newborn');
-    await expect(page.locator('.session-index-card strong').nth(1)).toContainText("Erick & Macy's Engagement");
-    await expect(page.locator('.session-index-card strong').nth(2)).toContainText("Makaylah's Senior Session");
+    await expect(page.locator('.session-index-card strong').nth(1)).toContainText("Makaylah's Senior Session");
+    await expect(page.locator('.session-index-card strong').nth(6)).toContainText("Erick & Macy's Engagement");
     await expect(page.locator('.session-index-card strong').nth(8)).toContainText('Sanchez, Hernandez, Allen, & Orozco Family Session');
     await expect(page.locator('.session-index-card strong').nth(11)).toContainText('Tijerina Lifestyle Newborn');
     await expect(page.locator('.session-index-card strong').nth(12)).toContainText('Schaefer Lifestyle Newborn');
