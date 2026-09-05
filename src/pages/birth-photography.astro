@@ -1,22 +1,48 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import NewbornPromo from "../components/NewbornPromo.astro";
+import sessions from "../data/smugmugGallery.json";
 
-const heroImage = "/images/birth/birth-11.jpg";
+const heroImage = "/images/birth/birth-09.jpg";
+const heroAccentImage = "/images/birth/birth-07.jpg";
 const whyImage = "/images/birth/birth-20.jpg";
-const feelImage = "/images/birth/birth-25.jpg";
-const oncallImage = "/images/birth/birth-23.jpg";
+const feelImage = "/images/birth/birth-42.jpg";
+const oncallImage = "/images/birth/birth-28.jpg";
 
 // Placeholder: reusing the homepage maternity portrait until Patrick sends a dedicated photo
 const photographerImage = "/images/about-abbie-maternity.jpg";
 
-const closingImage = "/images/birth/birth-33.jpg";
+const closingImage = "/images/birth/birth-39.jpg";
+const pharrMaternitySession = sessions.find((session) => session.id === "maternity-session-2");
+const packageFeatureImages = [
+  "/images/birth/birth-06.jpg",
+  "/images/birth/birth-21.jpg",
+  "/images/birth/birth-33.jpg",
+];
+const maternityFeatureImages = [
+  pharrMaternitySession?.images[11],
+  pharrMaternitySession?.images[22],
+  pharrMaternitySession?.images[20],
+].filter(Boolean);
+const faqFeatureImages = [
+  "/images/birth/birth-11.jpg",
+  "/images/birth/birth-31.jpg",
+];
 
 const galleryImages = [
-  "01", "02", "03", "04", "05", "06", "07", "09", "10",
-  "11", "12", "13", "14", "15", "16", "18", "19", "21",
-  "22", "23", "24", "26", "27", "28", "29", "30", "31",
-  "32", "34", "36", "37", "38", "40", "41", "42",
+  "01", "02", "03", "04", "05", "08", "09", "10",
+  "12", "13", "15", "16", "18", "19", "22", "23",
+  "24", "25", "26", "27", "29", "30", "32", "34",
+  "36", "37", "38", "40", "41",
 ].map((n) => `/images/birth/birth-${n}.jpg`);
+
+const maternitySessions = sessions
+  .filter((session) => session.eyebrow === "Maternity Session")
+  .map((session) => ({
+    ...session,
+    coverImage: session.images[0],
+    accentImage: session.images[2] ?? session.images[1] ?? session.images[0],
+  }));
 
 const packages: {
   name: string;
@@ -26,6 +52,7 @@ const packages: {
   description: string;
   includes: string[];
   closing: string;
+  maternityIncluded?: string;
 }[] = [
   {
     name: "Essential Birth",
@@ -65,6 +92,7 @@ const packages: {
     ],
     closing:
       "For the mama who wants to remember not only the day she met her baby, but the season she spent waiting for them.",
+    maternityIncluded: "Includes a maternity mini session.",
   },
   {
     name: "Heirloom Birth",
@@ -85,6 +113,32 @@ const packages: {
     ],
     closing:
       "The most complete documentation of the journey from waiting for your baby to finally having them in your arms.",
+    maternityIncluded: "Includes a full maternity session.",
+  },
+];
+
+const maternityPackages = [
+  {
+    name: "Full Maternity Session",
+    price: "$400",
+    includes: [
+      "Up to 60 minutes on location",
+      "30 digital images",
+      "Online gallery and print release",
+    ],
+    description:
+      "A full maternity session gives us room for solo portraits, partner photos, sibling moments, and the slower rhythm of this season.",
+  },
+  {
+    name: "Mini Maternity Session",
+    price: "$225",
+    includes: [
+      "Up to 30 minutes on location",
+      "12 digital images",
+      "Online gallery and print release",
+    ],
+    description:
+      "A shorter maternity session for a simple, beautiful record of the last weeks before baby arrives.",
   },
 ];
 
@@ -116,19 +170,40 @@ const faqs: { q: string; a?: string; pending?: boolean }[] = [
 ];
 ---
 
-<Layout title="Birth Photography" description="Birth photography sessions by Abigail Marie Photography in Schertz, TX, serving San Antonio and New Braunfels.">
-  <section class="page-hero">
-    <img src={heroImage} alt="Mother holding her newborn skin-to-skin just after a home birth" class="hero-image" />
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <p class="eyebrow">Birth Photography</p>
-      <h1>The day you meet them deserves to be remembered.</h1>
-      <p>
-        Birth happens in a blur &mdash; the waiting, the strength you didn't know you had, the
-        hand holding yours, the first cry, the tears, and the moment your baby is finally placed
-        against your chest. Birth photography allows you to be completely present while I quietly
-        preserve the story unfolding around you.
-      </p>
+<Layout
+  title="Birth & Maternity"
+  description="Birth and maternity photography by Abigail Marie Photography serving San Antonio and New Braunfels."
+  bodyClass="birth-page"
+>
+  <section class="gallery-editorial-hero birth-editorial-hero">
+    <div class="container gallery-editorial-hero__inner">
+      <div class="gallery-editorial-hero__copy birth-editorial-hero__copy reveal">
+        <h1>
+          <span>Birth &amp;{" "}</span>
+          <span>Maternity</span>
+        </h1>
+        <p class="birth-editorial-hero__lede">
+          The day you meet them deserves to be remembered.
+        </p>
+        <p>
+          Birth happens in a blur: the waiting, the strength you didn't know you had, the hand
+          holding yours, the first cry, and the moment your baby is finally placed against your
+          chest.
+        </p>
+        <a href="/contact" class="gallery-story-link">Inquire About Your Birth Story</a>
+        <div class="birth-hero-jump-links reveal">
+          <a href="#portfolio" class="btn">View the Portfolio</a>
+          <a href="#maternity-thumbnails" class="btn">See Maternity Sessions</a>
+        </div>
+      </div>
+      <div class="gallery-editorial-hero__art birth-editorial-hero__art reveal">
+        <figure class="gallery-editorial-hero__main">
+          <img src={heroImage} alt="Mother holding her newborn to her chest moments after birth" loading="eager" />
+        </figure>
+        <figure class="gallery-editorial-hero__offset">
+          <img src={heroAccentImage} alt="Parents holding their baby immediately after a water birth" loading="eager" />
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -156,7 +231,7 @@ const faqs: { q: string; a?: string; pending?: boolean }[] = [
   <section class="birth-experience-section">
     <div class="container about-grid">
       <div class="reveal">
-        <img src={feelImage} alt="Quiet, unobtrusive view into a birth room" />
+        <img src={feelImage} alt="Mother laboring with quiet support during birth" />
       </div>
       <div class="about-copy reveal">
         <span class="eyebrow-label">&ldquo;What does having a photographer at my birth actually feel like?&rdquo;</span>
@@ -175,10 +250,19 @@ const faqs: { q: string; a?: string; pending?: boolean }[] = [
     </div>
   </section>
 
-  <section class="packages-section">
+  <section id="birth-packages" class="packages-section">
     <div class="container">
       <div class="section-narrow reveal">
         <span class="eyebrow-label">Packages</span>
+        <h2>Birth stories and the season before.</h2>
+        <p>
+          Birth Story includes a maternity mini session, and Heirloom Birth includes a full
+          maternity session, so the waiting and the arrival can be held together.
+        </p>
+      </div>
+
+      <div class="birth-package-work-strip reveal" aria-label="Birth photography examples">
+        {packageFeatureImages.map((src) => <img src={src} alt="" loading="lazy" />)}
       </div>
 
       <div class="packages-grid birth-packages-grid">
@@ -189,6 +273,9 @@ const faqs: { q: string; a?: string; pending?: boolean }[] = [
               <h3>{pkg.name}</h3>
               <p class="package-price">{pkg.price}</p>
               <p class="package-tagline">{pkg.tagline}</p>
+              {pkg.maternityIncluded && (
+                <p class="package-included-note">{pkg.maternityIncluded}</p>
+              )}
               <p class="package-desc">{pkg.description}</p>
               <ul class="package-includes">
                 {pkg.includes.map((item) => <li>{item}</li>)}
@@ -198,54 +285,8 @@ const faqs: { q: string; a?: string; pending?: boolean }[] = [
           ))
         }
       </div>
-    </div>
-  </section>
-
-  <section class="oncall-section">
-    <div class="container about-grid">
-      <div class="about-copy reveal">
-        <h2>When will you come?</h2>
-        <p>
-          Babies don't tend to care what's written on the calendar. As your due date approaches,
-          I'll be on call for you 24/7. We'll stay in communication as labor begins, and I'll join
-          you once you're in active labor and remain through your baby's arrival and those first
-          precious hours together. Middle of the night? Weekend? Baby decides today is the day?
-          That's part of the story.
-        </p>
-      </div>
-      <div class="reveal">
-        <img src={oncallImage} alt="Newborn resting beside their birth announcement, with ultrasound photos from the pregnancy nearby" />
-      </div>
-    </div>
-  </section>
-
-  <section class="faq-section">
-    <div class="container section-narrow reveal">
-      <span class="eyebrow-label">FAQ</span>
-      <h2>Common Questions</h2>
-    </div>
-    <div class="container">
-      <div class="faq-list">
-        {
-          faqs.map((item) => (
-            <details class="faq-item reveal">
-              <summary>
-                <span>{item.q}</span>
-                <span class="faq-icon" aria-hidden="true">+</span>
-              </summary>
-              {item.pending ? (
-                <p class="faq-answer copy-pending">
-                  Answer pending — this needs exact, carefully written policy language from
-                  Patrick (covering precipitous births, failure to notify, illness/emergency,
-                  backup photographers, and circumstances outside anyone's control) before this
-                  goes live. Do not publish placeholder wording here.
-                </p>
-              ) : (
-                <p class="faq-answer">{item.a}</p>
-              )}
-            </details>
-          ))
-        }
+      <div class="package-booking-row reveal">
+        <a href="/contact" class="btn btn-accent">Book Your Birth</a>
       </div>
     </div>
   </section>
@@ -275,7 +316,122 @@ const faqs: { q: string; a?: string; pending?: boolean }[] = [
     </div>
   </section>
 
-  <section class="gallery-section">
+  <section class="oncall-section">
+    <div class="container about-grid">
+      <div class="about-copy reveal">
+        <h2>When will you come?</h2>
+        <p>
+          Babies don't tend to care what's written on the calendar. As your due date approaches,
+          I'll be on call for you 24/7. We'll stay in communication as labor begins, and I'll join
+          you once you're in active labor and remain through your baby's arrival and those first
+          precious hours together. Middle of the night? Weekend? Baby decides today is the day?
+          That's part of the story.
+        </p>
+      </div>
+      <div class="reveal">
+        <img src={oncallImage} alt="Mother holding her baby close in the first moments after birth" />
+      </div>
+    </div>
+  </section>
+
+  <section class="birth-maternity-section">
+    <div class="container">
+      <div class="birth-maternity-intro reveal">
+        <span class="eyebrow-label">Maternity</span>
+        <h2>The waiting is part of the story.</h2>
+        <p>
+          Maternity sessions now live here with birth work, because the last weeks of carrying
+          your baby and the day you meet them belong to the same chapter.
+        </p>
+      </div>
+      <div class="maternity-feature-layout reveal">
+        <div class="maternity-feature-copy">
+          <h3>Maternity on its own, or woven into birth.</h3>
+          <p>
+            Book maternity by itself, or choose a birth collection that already includes it.
+            Either way, the goal is the same: warm, natural photographs of the season before
+            everything changes.
+          </p>
+        </div>
+        <div class="maternity-feature-images" aria-label="Maternity session with parents and little girl">
+          {maternityFeatureImages.map((src) => <img src={src} alt="" loading="lazy" />)}
+        </div>
+      </div>
+      <div class="packages-grid maternity-packages-grid">
+        {
+          maternityPackages.map((pkg) => (
+            <div class="package-card reveal">
+              <h3>{pkg.name}</h3>
+              <p class="package-price">{pkg.price}</p>
+              <ul class="package-includes">
+                {pkg.includes.map((item) => <li>{item}</li>)}
+              </ul>
+              <p class="package-desc">{pkg.description}</p>
+            </div>
+          ))
+        }
+      </div>
+      <div class="package-booking-row package-booking-row--maternity reveal">
+        <a href="/contact" class="btn btn-accent">Book a Maternity Session</a>
+      </div>
+      <div class="birth-maternity-grid" id="maternity-thumbnails">
+        {
+          maternitySessions.map((session) => (
+            <a href={`/gallery/${session.id}`} class="birth-maternity-card reveal">
+              <span class="birth-maternity-card__image birth-maternity-card__image--main">
+                <img src={session.coverImage} alt="" loading="lazy" />
+              </span>
+              <span class="birth-maternity-card__image birth-maternity-card__image--accent">
+                <img src={session.accentImage} alt="" loading="lazy" />
+              </span>
+              <span class="birth-maternity-card__text">
+                <span>{session.eyebrow}</span>
+                <strong>{session.title}</strong>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <div class="container section-narrow reveal">
+      <span class="eyebrow-label">FAQ</span>
+      <h2>Common Questions</h2>
+    </div>
+    <div class="container">
+      <div class="faq-with-work">
+        <div class="faq-work-visual reveal" aria-label="Birth photography details">
+          {faqFeatureImages.map((src) => <img src={src} alt="" loading="lazy" />)}
+        </div>
+        <div class="faq-list">
+          {
+            faqs.map((item) => (
+              <details class="faq-item reveal">
+                <summary>
+                  <span>{item.q}</span>
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </summary>
+                {item.pending ? (
+                  <p class="faq-answer copy-pending">
+                    Answer pending — this needs exact, carefully written policy language from
+                    Patrick (covering precipitous births, failure to notify, illness/emergency,
+                    backup photographers, and circumstances outside anyone's control) before this
+                    goes live. Do not publish placeholder wording here.
+                  </p>
+                ) : (
+                  <p class="faq-answer">{item.a}</p>
+                )}
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio" class="gallery-section">
     <div class="container">
       <div class="section-narrow reveal">
         <span class="eyebrow-label">Portfolio</span>
@@ -316,4 +472,6 @@ const faqs: { q: string; a?: string; pending?: boolean }[] = [
       <cite>John 16:21</cite>
     </div>
   </section>
+
+  <NewbornPromo ctaHref="#birth-packages" />
 </Layout>

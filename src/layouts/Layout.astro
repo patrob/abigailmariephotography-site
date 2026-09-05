@@ -2,15 +2,21 @@
 export interface Props {
   title: string;
   description?: string;
+  bodyClass?: string;
 }
 
 const {
   title,
-  description = "Abigail Marie Photography — family, lifestyle, and milestone photography in Schertz, TX, serving San Antonio and New Braunfels.",
+  description = "Abigail Marie Photography, family, lifestyle, newborn, maternity, and birth photography serving San Antonio and New Braunfels.",
+  bodyClass = "",
 } = Astro.props;
 
-const LOGO_URL =
-  "/images/logo.png";
+const LOGO_GREY_URL = "/images/abigail-marie-logo-grey.png";
+const LOGO_WHITE_URL = "/images/abigail-marie-logo-white.png";
+
+const SITE_URL = "https://abigailmariephotography.com";
+const OG_IMAGE_URL = `${SITE_URL}/images/og-image.jpg`;
+const canonicalUrl = new URL(Astro.url.pathname, SITE_URL).toString();
 ---
 
 <!doctype html>
@@ -19,36 +25,67 @@ const LOGO_URL =
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#faf8f3" />
     <meta name="generator" content={Astro.generator} />
     <title>{title} | Abigail Marie Photography</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
 
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Abigail Marie Photography" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={`${title} | Abigail Marie Photography`} />
     <meta property="og:description" content={description} />
+    <meta property="og:image" content={OG_IMAGE_URL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Abigail Marie Photography" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} | Abigail Marie Photography`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={OG_IMAGE_URL} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Cinzel:wght@400;500;600&family=Alex+Brush&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Cinzel:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body class={bodyClass}>
     <header class="site-header">
       <div class="container header-inner">
+        <a class="site-brand" href="/" aria-label="Abigail Marie Photography home">
+          <img
+            src={LOGO_WHITE_URL}
+            alt="Abigail Marie Photography"
+            class="site-brand__logo site-brand__logo--light"
+          />
+          <img
+            src={LOGO_GREY_URL}
+            alt=""
+            class="site-brand__logo site-brand__logo--dark"
+            aria-hidden="true"
+          />
+        </a>
         <nav class="main-nav" aria-label="Main navigation">
           <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
             <span></span><span></span><span></span>
           </button>
           <ul class="nav-list">
             <li><a href="/">Home</a></li>
-            <li><a href="/gallery">Gallery</a></li>
-            <li><a href="/birth-photography">Birth Photography</a></li>
-            <li><a href="/packages">Packages</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/gallery">Portrait &amp; Lifestyle</a></li>
+            <li><a href="/birth-photography">Birth &amp; Maternity</a></li>
             <li><a href="/contact">Contact</a></li>
           </ul>
         </nav>
+        <a class="header-session-link" href="/contact">Plan Your Session</a>
       </div>
     </header>
 
@@ -58,9 +95,9 @@ const LOGO_URL =
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <span class="logo-badge footer-logo-badge">
-          <img src={LOGO_URL} alt="Abigail Marie Photography" class="footer-logo" />
-        </span>
+        <a class="footer-logo-link" href="/" aria-label="Abigail Marie Photography home">
+          <img src={LOGO_WHITE_URL} alt="Abigail Marie Photography" class="footer-logo" />
+        </a>
         <p class="footer-tagline">A photograph is the pause button on life.</p>
         <div class="footer-social">
           <a href="https://www.instagram.com/abigailmariephotos/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
@@ -72,10 +109,21 @@ const LOGO_URL =
           <span class="dot">&middot;</span>
           <a href="mailto:info@abigailmariephotography.com">info@abigailmariephotography.com</a>
         </div>
-        <p class="footer-location">Schertz, TX &mdash; serving San Antonio &amp; New Braunfels</p>
+        <p class="footer-location">Serving San Antonio &amp; New Braunfels</p>
         <p class="footer-copy">&copy; {new Date().getFullYear()} Abigail Marie Photography. All rights reserved.</p>
       </div>
     </footer>
+
+    <button
+      id="back-to-top"
+      class="back-to-top"
+      type="button"
+      aria-label="Scroll back to top"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+        <path d="M12 5l-7 7h4v7h6v-7h4z" fill="currentColor" />
+      </svg>
+    </button>
 
     <script>
       const toggle = document.querySelector(".nav-toggle");
@@ -85,6 +133,19 @@ const LOGO_URL =
         toggle.setAttribute("aria-expanded", String(!expanded));
         navList?.classList.toggle("open");
       });
+
+      // back-to-top
+      const backToTop = document.getElementById("back-to-top");
+      if (backToTop) {
+        const toggleBackToTop = () => {
+          backToTop.classList.toggle("back-to-top--visible", window.scrollY > 480);
+        };
+        window.addEventListener("scroll", toggleBackToTop, { passive: true });
+        toggleBackToTop();
+        backToTop.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      }
 
       // reveal-on-scroll
       const revealEls = document.querySelectorAll(".reveal");

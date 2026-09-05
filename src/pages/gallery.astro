@@ -1,47 +1,288 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import sessions from "../data/smugmugGallery.json";
 
-const heroImage =
-  "/images/805a1137.jpg";
-
-const maternityImages = Array.from({ length: 21 }, (_, i) =>
-  `/images/maternity/maternity-${String(i + 1).padStart(2, "0")}.jpg`
+const portraitAndLifestyleSessions = sessions.filter(
+  (session) => session.eyebrow !== "Maternity Session" && session.id !== "milestone-session-1"
 );
+
+const sessionCardImages = portraitAndLifestyleSessions.map((session) => ({
+  ...session,
+  coverImage: session.images[0],
+  accentImage: session.images[1] ?? session.images[0],
+  previewImages: session.images.slice(0, 9),
+}));
+
+const lifestyleSession =
+  sessionCardImages.find((session) => session.id === "lifestyle-newborn-session-1") ??
+  sessionCardImages[0];
+const editorialHeroImage = lifestyleSession.coverImage;
+const editorialAccentImage = lifestyleSession.images[4] ?? lifestyleSession.accentImage;
+
+const investmentImages = [
+  sessionCardImages.find((session) => session.id === "couples-session-1")?.images[0],
+  sessionCardImages.find((session) => session.id === "couples-session-1")?.images[2],
+  sessionCardImages.find((session) => session.id === "couples-session-1")?.images[4],
+].filter(Boolean);
+
+const faqImages = [
+  sessionCardImages.find((session) => session.id === "family-session-5")?.images[0],
+  sessionCardImages.find((session) => session.id === "family-session-5")?.images[3],
+].filter(Boolean);
+
+const birthAndMaternityPreviewImages = [
+  "/images/birth/birth-34.jpg",
+  "/images/birth/birth-31.jpg",
+].filter(Boolean);
+
+const portraitPackages = [
+  {
+    name: "Full Sessions",
+    price: "$400",
+    includes: [
+      "Up to 60 minutes on location",
+      "30 digital images",
+      "Online gallery and print release",
+    ],
+    description:
+      "A full session gives us room for family photos, extended family photos, and the extra variety that comes from a slower pace.",
+  },
+  {
+    name: "Mini Sessions",
+    price: "$225",
+    includes: [
+      "Up to 30 minutes on location",
+      "12 digital images",
+      "Online gallery and print release",
+    ],
+    description:
+      "A shorter session for updated family photos, newly engaged couples, or a simple round of portraits for the kiddos.",
+  },
+  {
+    name: "Lifestyle Sessions",
+    price: "$500",
+    includes: [
+      "90 minutes in client's home",
+      "40 digital images",
+      "Online gallery and print release",
+    ],
+    description:
+      "A lifestyle session captures everyday moments beautifully in your own home, especially for newborn days and family connection.",
+  },
+];
+
+const portraitFaqs = [
+  {
+    question: "What kinds of sessions are included here?",
+    answer:
+      "Family, senior, milestone, and in-home lifestyle newborn sessions all live under Portrait & Lifestyle. Maternity now lives with Birth & Maternity.",
+  },
+  {
+    question: "Where do portrait sessions take place?",
+    answer:
+      "Most sessions happen outdoors around San Antonio and New Braunfels, with location guidance based on light, season, and the feeling you want.",
+  },
+  {
+    question: "What makes a lifestyle newborn session different?",
+    answer:
+      "Lifestyle newborn sessions happen at home and focus on connection, tiny details, siblings, parents, and the natural rhythm of the newborn season.",
+  },
+  {
+    question: "How do we choose our final images?",
+    answer:
+      "Your package includes a set number of digital images, and you can choose favorites from your private gallery with the option to purchase more.",
+  },
+  {
+    question: "Can extended family be included?",
+    answer:
+      "Yes. A full session is best when you want extended family combinations, more variety, and a slower pace.",
+  },
+  {
+    question: "How far in advance should we book?",
+    answer:
+      "A few weeks ahead is ideal for portraits. Newborn sessions are best reserved earlier so timing stays flexible.",
+  },
+];
 ---
 
-<Layout title="Gallery" description="Browse family, lifestyle, and milestone photography sessions by Abigail Marie Photography in Schertz, TX.">
-  <section class="page-hero">
-    <img src={heroImage} alt="Gallery hero" class="hero-image" />
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <p class="eyebrow">Portfolio</p>
-      <h1>Gallery</h1>
+<Layout
+  title="Portrait & Lifestyle"
+  description="Browse family, lifestyle, newborn, senior, and milestone portrait sessions by Abigail Marie Photography serving San Antonio and New Braunfels."
+  bodyClass="gallery-page"
+>
+  <section class="gallery-editorial-hero">
+    <div class="container gallery-editorial-hero__inner">
+      <div class="gallery-editorial-hero__copy reveal">
+        <h1>
+          <span>Portrait &amp;{" "}</span>
+          <span>Lifestyle</span>
+        </h1>
+        <p>
+          Family, newborn, senior, milestone, and lifestyle portraits with the warm, unhurried
+          feeling of real life.
+        </p>
+        <a href="/contact" class="gallery-story-link">Inquire to Begin</a>
+      </div>
+      <div class="gallery-editorial-hero__art reveal">
+        <figure class="gallery-editorial-hero__main">
+          <img src={editorialHeroImage} alt="Lifestyle newborn portrait by Abigail Marie Photography" loading="eager" />
+        </figure>
+        <figure class="gallery-editorial-hero__offset">
+          <img src={editorialAccentImage} alt="Family portrait detail by Abigail Marie Photography" loading="eager" />
+        </figure>
+      </div>
     </div>
   </section>
 
-  <section class="gallery-section maternity-gallery-section">
+  <section class="gallery-index-section">
     <div class="container">
       <div class="section-narrow reveal">
-        <span class="eyebrow-label">Maternity Session</span>
-        <h2>Aaron & Kelli's Maternity Session</h2>
+        <span class="eyebrow-label">Featured</span>
+        <h2>Recent Portrait &amp; Lifestyle</h2>
       </div>
-      <div class="masonry reveal">
+      <div class="session-index-shell reveal" data-session-index-shell>
+        <button class="session-index-arrow session-index-arrow--prev" type="button" aria-label="Previous sessions" data-session-index-prev>
+          <span class="session-index-arrow__line" aria-hidden="true"></span>
+        </button>
+        <nav class="session-index-grid" aria-label="Portrait and lifestyle sessions" data-session-index>
+          {
+            sessionCardImages.map((session, sessionIndex) => (
+              <a
+                href={`/gallery/${session.id}`}
+                class="session-index-card"
+                aria-label={`View ${session.title} ${sessionIndex + 1}`}
+              >
+                <span class="session-index-card__image">
+                  <img src={session.coverImage} alt="" loading="lazy" />
+                </span>
+                <span class="session-index-card__meta">{session.eyebrow}</span>
+                <strong>{session.title}</strong>
+              </a>
+            ))
+          }
+        </nav>
+        <button class="session-index-arrow session-index-arrow--next" type="button" aria-label="View more sessions" data-session-index-next>
+          <span class="session-index-arrow__label">View More</span>
+          <span class="session-index-arrow__line" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section id="investment" class="packages-section portrait-investment-section">
+    <div class="container">
+      <div class="section-narrow reveal">
+        <span class="eyebrow-label">Investment</span>
+        <h2>Portrait &amp; Lifestyle Sessions</h2>
+      </div>
+      <p class="packages-note reveal">
+        All packages include a private gallery and print release. Clients get to pick their
+        favorite photos, with the option of purchasing additional images at $25 per image or
+        5 for $100.
+      </p>
+      <div class="investment-work-strip reveal" aria-label="Portrait and lifestyle photography examples">
         {
-          maternityImages.map((src, i) => (
-            <figure>
-              <img src={src} alt={`Maternity session portfolio image ${i + 1}`} loading="lazy" />
-            </figure>
+          investmentImages.map((src) => (
+            <img src={src} alt="" loading="lazy" />
           ))
         }
       </div>
+      <div class="packages-grid">
+        {
+          portraitPackages.map((pkg) => (
+            <div class="package-card reveal">
+              <h3>{pkg.name}</h3>
+              <p class="package-price">{pkg.price}</p>
+              <ul class="package-includes">
+                {pkg.includes.map((item) => <li>{item}</li>)}
+              </ul>
+              <p class="package-desc">{pkg.description}</p>
+            </div>
+          ))
+        }
+      </div>
+      <div class="package-booking-row reveal">
+        <a href="/contact" class="btn btn-accent">Book Your Session</a>
+      </div>
     </div>
   </section>
 
-  <section class="gallery-section">
-    <div class="container">
-      <div class="cta-row reveal">
-        <a href="/packages" class="btn btn-accent">Book a Session</a>
+  <section class="portrait-faq-section">
+    <div class="container portrait-faq">
+      <div class="section-narrow reveal">
+        <span class="eyebrow-label">FAQ</span>
+        <h2>Portrait &amp; Lifestyle FAQ</h2>
+      </div>
+      <div class="portrait-faq-layout">
+        <div class="portrait-faq-visual reveal" aria-label="Portrait and lifestyle session details">
+          {
+            faqImages.map((src) => (
+              <img src={src} alt="" loading="lazy" />
+            ))
+          }
+        </div>
+        <div class="portrait-faq-grid">
+          {
+            portraitFaqs.map((item) => (
+              <details class="portrait-faq-item reveal">
+                <summary>{item.question}</summary>
+                <p>{item.answer}</p>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="portrait-birth-link-section">
+    <div class="container portrait-birth-link reveal">
+      <div class="portrait-birth-link__media" aria-label="Birth and maternity photography examples">
+        {
+          birthAndMaternityPreviewImages.map((src) => (
+            <img src={src} alt="" loading="lazy" />
+          ))
+        }
+      </div>
+      <div class="portrait-birth-link__copy">
+        <span class="eyebrow-label">Looking for Birth &amp; Maternity?</span>
+        <h2>The waiting and the arrival belong together.</h2>
+        <p>
+          Maternity and birth work now live together, with standalone maternity sessions plus
+          birth collections that include maternity options.
+        </p>
+        <a href="/birth-photography" class="gallery-story-link">View Birth &amp; Maternity</a>
       </div>
     </div>
   </section>
 </Layout>
+
+<script>
+  const shell = document.querySelector("[data-session-index-shell]");
+  const scroller = document.querySelector("[data-session-index]");
+  const previousButton = document.querySelector("[data-session-index-prev]");
+  const nextButton = document.querySelector("[data-session-index-next]");
+
+  if (shell && scroller && previousButton && nextButton) {
+    const updateArrowState = () => {
+      const maxScroll = scroller.scrollWidth - scroller.clientWidth;
+      const hasOverflow = maxScroll > 4;
+      shell.classList.toggle("session-index-shell--scrollable", hasOverflow);
+      previousButton.disabled = !hasOverflow || scroller.scrollLeft <= 4;
+      nextButton.disabled = !hasOverflow || scroller.scrollLeft >= maxScroll - 4;
+    };
+
+    const scrollByCard = (direction) => {
+      const card = scroller.querySelector(".session-index-card");
+      const gap = 14;
+      const distance = card ? card.getBoundingClientRect().width + gap : scroller.clientWidth * 0.75;
+      scroller.scrollBy({ left: distance * direction, behavior: "smooth" });
+    };
+
+    previousButton.addEventListener("click", () => scrollByCard(-1));
+    nextButton.addEventListener("click", () => scrollByCard(1));
+    scroller.addEventListener("scroll", updateArrowState, { passive: true });
+    window.addEventListener("resize", updateArrowState);
+    updateArrowState();
+  }
+</script>

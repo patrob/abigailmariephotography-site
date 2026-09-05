@@ -1,7 +1,7 @@
 # Abigail Marie Photography
 
 Static site for Abigail Marie Photography, built with [Astro](https://astro.build). A static
-clone of the Squarespace site content — home, gallery, packages, and contact pages.
+site with home, portrait & lifestyle, photography, and contact pages.
 
 ## Project Structure
 
@@ -16,7 +16,7 @@ clone of the Squarespace site content — home, gallery, packages, and contact p
 │   ├── pages/
 │   │   ├── index.astro
 │   │   ├── gallery.astro
-│   │   ├── packages.astro
+│   │   ├── birth-photography.astro
 │   │   └── contact.astro
 │   └── styles/
 │       └── global.css

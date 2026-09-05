@@ -1,0 +1,66 @@
+---
+interface Props {
+  ctaHref: string;
+  revealOnScroll?: boolean;
+}
+
+const { ctaHref, revealOnScroll = false } = Astro.props;
+---
+
+<aside
+  class="newborn-promo"
+  data-newborn-promo
+  data-reveal-on-scroll={revealOnScroll ? "true" : "false"}
+  aria-label="Newborn session promotion"
+>
+  <button class="newborn-promo__close" type="button" aria-label="Close newborn session promotion" data-newborn-promo-close>
+    &times;
+  </button>
+  <p class="newborn-promo__eyebrow">Limited Birth Collection Bonus</p>
+  <h2>Free lifestyle newborn session</h2>
+  <p>
+    Book a Birth Story or Heirloom Birth collection and receive a complimentary lifestyle
+    newborn session after baby arrives.
+  </p>
+  <a href={ctaHref} class="newborn-promo__link">Browse Birth &amp; Maternity</a>
+</aside>
+
+<script>
+  const promo = document.querySelector("[data-newborn-promo]");
+  const promoClose = document.querySelector("[data-newborn-promo-close]");
+
+  if (promo && promoClose) {
+    const shouldWaitForScroll = promo.getAttribute("data-reveal-on-scroll") === "true";
+    const scrollThreshold = Math.min(620, window.innerHeight * 0.72);
+    let delayComplete = false;
+
+    const revealPromo = () => {
+      promo.classList.add("newborn-promo--visible");
+      window.removeEventListener("scroll", maybeRevealPromo);
+    };
+
+    const maybeRevealPromo = () => {
+      if (!delayComplete) {
+        return;
+      }
+
+      if (!shouldWaitForScroll || window.scrollY >= scrollThreshold) {
+        revealPromo();
+      }
+    };
+
+    window.setTimeout(() => {
+      delayComplete = true;
+      maybeRevealPromo();
+    }, 5200);
+
+    if (shouldWaitForScroll) {
+      window.addEventListener("scroll", maybeRevealPromo, { passive: true });
+    }
+
+    promoClose.addEventListener("click", () => {
+      promo.classList.remove("newborn-promo--visible");
+      promo.setAttribute("hidden", "");
+    });
+  }
+</script>
