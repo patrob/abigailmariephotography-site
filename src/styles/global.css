@@ -1244,6 +1244,7 @@ section {
 .birth-hero-jump-links {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.85rem;
   margin-top: 1.5rem;
 }
@@ -2468,6 +2469,10 @@ section {
   .gallery-editorial-hero .gallery-story-link {
     font-size: 0.7rem;
     letter-spacing: 0.13em;
+  }
+
+  .birth-hero-jump-links {
+    justify-content: flex-start;
   }
 
   .home-album-hero {
