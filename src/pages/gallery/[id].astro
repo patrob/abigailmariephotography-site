@@ -19,11 +19,14 @@ const { session, previousSession, nextSession } = Astro.props;
 const heroImage = session.images[0];
 const accentImage = session.images[1] ?? session.images[0];
 const portfolioImages = session.images.slice(2);
+const sessionLocation = session.locationLine
+  ? session.locationLine.split("|").pop()?.trim()
+  : "San Antonio, New Braunfels, and the Texas Hill Country";
 ---
 
 <Layout
   title={session.title}
-  description={`${session.title} by Abigail Marie Photography.`}
+  description={`${session.title}, a ${session.eyebrow.toLowerCase()} by Abigail Marie Photography in ${sessionLocation}.`}
   bodyClass="gallery-page session-detail-page"
 >
   <section class="session-detail-hero">
