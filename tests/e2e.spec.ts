@@ -93,9 +93,10 @@ test.describe('Abigail Marie Photography — Full Site E2E', () => {
     await expect(page.locator('.home-recent-card')).toHaveCount(4);
     await expect(page.locator('.home-recent-card').first()).toHaveAttribute('href', '/gallery/lifestyle-newborn-session-4');
     await expect(page.locator('.home-recent-card[href="/gallery/lifestyle-newborn-session-4"]')).toContainText('Hentges Lifestyle Newborn');
-    await expect(page.locator('.home-recent-card[href="/gallery/couples-session-1"]')).toContainText("Erick & Macy's Engagement");
-    await expect(page.locator('.home-recent-card[href="/gallery/lifestyle-newborn-session-1"]')).toContainText('Mendoza Family Lifestyle Newborn');
     await expect(page.locator('.home-recent-card[href="/gallery/senior-session-1"]')).toContainText("Makaylah's Senior Session");
+    await expect(page.locator('.home-recent-card[href="/gallery/lifestyle-newborn-session-1"]')).toContainText('Mendoza Family Lifestyle Newborn');
+    await expect(page.locator('.home-recent-card[href="/gallery/family-session-6"]')).toContainText('Zejdlik Family');
+    await expect(page.locator('.home-recent-card[href="/gallery/couples-session-1"]')).toHaveCount(0);
 
     // Service teasers
     await expect(page.locator('.portrait-lifestyle-teaser-section')).toContainText('Portrait & Lifestyle Sessions');

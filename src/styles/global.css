@@ -1393,21 +1393,18 @@ section {
 }
 
 .home-welcome h1 {
-  position: absolute;
-  left: 0;
-  bottom: 9%;
-  z-index: 2;
-  width: min(30rem, 44%);
-  color: var(--color-cream);
+  position: static;
+  width: auto;
+  color: rgba(98, 102, 90, 0.86);
   font-family: var(--font-heading);
   font-size: clamp(2.2rem, 3.6vw, 3.75rem);
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0.04em;
   line-height: 0.92;
-  margin: 0;
-  padding-right: 1.25rem;
-  text-shadow: 0 4px 24px rgba(20, 20, 16, 0.55), 0 1px 6px rgba(20, 20, 16, 0.45);
+  margin: 0 0 1.25rem;
+  padding-right: 0;
+  text-shadow: none;
   text-transform: uppercase;
 }
 
