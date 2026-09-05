@@ -91,7 +91,8 @@ test.describe('Abigail Marie Photography — Full Site E2E', () => {
     // Recent sessions
     await expect(page.locator('.home-recent-section')).toContainText('A closer look at real stories.');
     await expect(page.locator('.home-recent-card')).toHaveCount(4);
-    await expect(page.locator('.home-recent-card').first()).toHaveAttribute('href', '/gallery/couples-session-1');
+    await expect(page.locator('.home-recent-card').first()).toHaveAttribute('href', '/gallery/lifestyle-newborn-session-4');
+    await expect(page.locator('.home-recent-card[href="/gallery/lifestyle-newborn-session-4"]')).toContainText('Hentges Lifestyle Newborn');
     await expect(page.locator('.home-recent-card[href="/gallery/couples-session-1"]')).toContainText("Erick & Macy's Engagement");
     await expect(page.locator('.home-recent-card[href="/gallery/lifestyle-newborn-session-1"]')).toContainText('Mendoza Family Lifestyle Newborn');
     await expect(page.locator('.home-recent-card[href="/gallery/senior-session-1"]')).toContainText("Makaylah's Senior Session");
@@ -201,16 +202,17 @@ test.describe('Abigail Marie Photography — Full Site E2E', () => {
     await expect(page).toHaveURL('/gallery');
     await expect(page).toHaveTitle(/Portrait & Lifestyle/);
     await expect(page.locator('h1')).toContainText('Portrait & Lifestyle');
-    await expect(page.locator('.session-index-card')).toHaveCount(12);
+    await expect(page.locator('.session-index-card')).toHaveCount(13);
     await expect(page.locator('.session-index-card[href="/gallery/milestone-session-1"]')).toHaveCount(0);
     await expect(page.locator('.session-index-card[href="/gallery/family-session-8"]')).toHaveCount(0);
     await expect(page.locator('.session-index-card[href="/gallery/family-session-7"]')).toHaveCount(0);
     await expect(page.locator('.session-index-card[href="/gallery/couples-session-2"]')).toHaveCount(0);
-    await expect(page.locator('.session-index-card strong').nth(0)).toContainText("Erick & Macy's Engagement");
-    await expect(page.locator('.session-index-card strong').nth(1)).toContainText("Makaylah's Senior Session");
-    await expect(page.locator('.session-index-card strong').nth(7)).toContainText('Sanchez, Hernandez, Allen, & Orozco Family Session');
-    await expect(page.locator('.session-index-card strong').nth(10)).toContainText('Tijerina Lifestyle Newborn');
-    await expect(page.locator('.session-index-card strong').nth(11)).toContainText('Schaefer Lifestyle Newborn');
+    await expect(page.locator('.session-index-card strong').nth(0)).toContainText('Hentges Lifestyle Newborn');
+    await expect(page.locator('.session-index-card strong').nth(1)).toContainText("Erick & Macy's Engagement");
+    await expect(page.locator('.session-index-card strong').nth(2)).toContainText("Makaylah's Senior Session");
+    await expect(page.locator('.session-index-card strong').nth(8)).toContainText('Sanchez, Hernandez, Allen, & Orozco Family Session');
+    await expect(page.locator('.session-index-card strong').nth(11)).toContainText('Tijerina Lifestyle Newborn');
+    await expect(page.locator('.session-index-card strong').nth(12)).toContainText('Schaefer Lifestyle Newborn');
     await expect(page.locator('.gallery-story-section')).toHaveCount(0);
     await expect(page.locator('.portrait-faq-section')).toContainText('Portrait & Lifestyle FAQ');
     await expect(page.locator('.portrait-birth-link-section')).toContainText('Looking for Birth & Maternity?');
