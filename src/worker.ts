@@ -57,6 +57,7 @@ async function handleContactRequest(request: Request, env: Env): Promise<Respons
     `Session Date / Due Date: ${getString(payload.sessionDate) || "Not provided"}`,
     `Preferred location: ${getString(payload.preferredLocation) || "Not provided"}`,
     `How did you hear about me?: ${getString(payload.referralSource) || "Not provided"}`,
+    `What drew you into my work?: ${getString(payload.styleDraw) || "Not provided"}`,
     "",
     "Tell me what you're dreaming of:",
     message,
@@ -105,6 +106,12 @@ export default {
 
     if (url.pathname === "/api/contact") {
       return handleContactRequest(request, env);
+    }
+
+    if (url.pathname === "/packages" || url.pathname === "/packages/") {
+      url.pathname = "/gallery";
+      url.hash = "investment";
+      return Response.redirect(url.toString(), 301);
     }
 
     return env.ASSETS.fetch(request);

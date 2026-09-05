@@ -1,114 +1,180 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import NewbornPromo from "../components/NewbornPromo.astro";
+import sessions from "../data/smugmugGallery.json";
 
-const heroImage =
-  "/images/maternity-hero.jpg";
+const albumImages = [
+  "/images/img_0865.jpg",
+  "/images/805a0333.jpg",
+  "/images/lifestyle-newborn-805a1182.jpg",
+  "/images/kids-field-golden-hour.jpg",
+  "/images/testimonials/jordan-kaylee-20.jpg",
+  "/images/maternity-hero.jpg",
+  "/images/testimonials/jordan-kaylee-21.jpg",
+  "/images/maternity/maternity-01.jpg",
+  "/images/birth/birth-36.jpg",
+];
 
-const aboutImage =
-  "/images/about-abbie-maternity.jpg";
+const scrollingAlbumImages = [...albumImages, ...albumImages, ...albumImages];
 
+const welcomeImage =
+  "/images/about-abbie-family-robinson.jpg";
+
+const familyTeaserImage =
+  "/images/kids-field-golden-hour.jpg";
 const lifestyleTeaserImage =
   "/images/lifestyle-newborn-805a1182.jpg";
 
-const familyTeaserImage =
-  "/images/805a0333.jpg";
-
 const birthTeaserImage =
-  "/images/birth/birth-23.jpg";
+  "/images/birth/birth-34.jpg";
+const birthTeaserAccentImage =
+  "/images/birth/birth-33.jpg";
+
+const jordanReviewImages = [
+  "/images/testimonials/jordan-kaylee-20.jpg",
+  "/images/testimonials/jordan-kaylee-21.jpg",
+];
+
+const recentSessionIds = [
+  "couples-session-1",
+  "lifestyle-newborn-session-1",
+  "senior-session-1",
+  "family-session-8",
+];
+
+const recentSessions = recentSessionIds
+  .map((id) => sessions.find((session) => session.id === id))
+  .filter(Boolean)
+  .map((session) => ({
+    href: `/gallery/${session.id}`,
+    image: session.images[0],
+    eyebrow: session.eyebrow,
+    title: session.title,
+  }));
 ---
 
-<Layout title="Home" description="Abigail Marie Photography offers family, maternity, lifestyle, newborn, milestone, and birth photography serving San Antonio and New Braunfels.">
-  <section class="hero">
-    <img src={heroImage} alt="Maternity portrait session by Abigail Marie Photography" class="hero-image" loading="eager" />
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <p class="eyebrow">Abigail Marie Photography</p>
-      <h1 class="hero-quote">A photograph is the pause button on life.</h1>
+<Layout
+  title="Home"
+  description="Abigail Marie Photography offers family, maternity, lifestyle, newborn, and birth photography serving San Antonio and New Braunfels."
+  bodyClass="home-page"
+>
+  <section class="home-album-hero" aria-label="Family and lifestyle photography by Abigail Marie Photography">
+    <div class="home-album-hero__track">
+      {
+        scrollingAlbumImages.map((src, index) => (
+          <figure class:list={["home-album-hero__frame", index % 3 === 1 && "home-album-hero__frame--low"]}>
+            <img src={src} alt="" loading="eager" />
+          </figure>
+        ))
+      }
+    </div>
+    <div class="home-album-hero__slideshow" aria-hidden="true">
+      {
+        albumImages.map((src, index) => (
+          <figure
+            class="home-album-hero__slide"
+            style={`--slide-delay: ${index === 0 ? 0 : (index - albumImages.length) * 3}s`}
+          >
+            <img src={src} alt="" loading="eager" />
+          </figure>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="home-welcome-section">
+    <div class="container home-welcome reveal">
+      <figure class="home-welcome__portrait">
+        <img src={welcomeImage} alt="Abigail with her husband and two sons outdoors" loading="lazy" />
+      </figure>
+      <div class="home-welcome__content">
+        <p class="home-welcome__small">lifestyle &bull; maternity &bull; birth</p>
+        <h1>The beauty of your everyday</h1>
+        <div class="home-welcome__copy">
+          <h2>Hi there, I'm Abbie.</h2>
+          <p>
+            I'm a wife, mama, and photographer with a heart for documenting the beauty in
+            ordinary moments. I want your photographs to feel genuine: full of movement, connection,
+            laughter, and the people you love most.
+          </p>
+          <p>
+            My sessions are relaxed and natural, with just enough direction to help you feel
+            comfortable in front of the camera. Because years from now, I want these photographs to
+            feel less like a photo session and more like a little piece of your life you get to
+            keep.
+          </p>
+          <a href="/about" class="gallery-story-link">Meet Abbie</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-work-intro">
+    <div class="container home-work-intro__inner reveal">
+      <p class="eyebrow-label">The Work</p>
+      <h2>Honest photographs for the season you are in.</h2>
       <p>
-        Relaxed, natural portrait and birth photography for families around the San Antonio and
-        New Braunfels areas.
+        Whether it is a slow afternoon with your children, the quiet wonder of pregnancy, or the
+        first hours of your baby's story, each session is made to feel relaxed, natural, and true
+        to you.
       </p>
-      <div class="cta-row hero-cta-row">
-        <a href="/gallery" class="btn btn-light">View the Gallery</a>
-        <a href="/birth-photography" class="btn btn-light">Birth Photography</a>
-        <a href="/contact" class="btn btn-light btn-subtle-light">Plan a Session</a>
+    </div>
+  </section>
+
+  <section class="home-recent-section" aria-labelledby="home-recent-heading">
+    <div class="container">
+      <div class="home-recent-heading reveal">
+        <div>
+          <p class="eyebrow-label">Recent Sessions</p>
+          <h2 id="home-recent-heading">A closer look at real stories.</h2>
+        </div>
+        <a href="/gallery" class="gallery-story-link">View All Sessions</a>
+      </div>
+      <div class="home-recent-grid">
+        {
+          recentSessions.map((session) => (
+            <a href={session.href} class="home-recent-card reveal">
+              <img src={session.image} alt={`${session.title} photography session`} loading="lazy" />
+              <span>{session.eyebrow}</span>
+              <h3>{session.title}</h3>
+            </a>
+          ))
+        }
       </div>
     </div>
   </section>
 
-  <section class="about-section">
+  <section class="session-teaser-section portrait-lifestyle-teaser-section">
     <div class="container about-grid">
-      <div class="about-copy reveal">
-        <span class="eyebrow-label">Meet Your Photographer</span>
-        <h2>Hi, I'm Abbie.</h2>
-        <img
-          src={aboutImage}
-          alt="Abbie, owner and photographer of Abigail Marie Photography"
-          class="about-mobile-photo"
-        />
-        <p>
-          I was born in Arizona, but I got to Texas as soon as I could. I have over 10 years of
-          professional photography experience, and I have fallen in love with capturing family
-          stories. I'm serving families from San Antonio to New Braunfels. I'm the wife of a
-          wonderful man named Patrick, a two-time boy mom, a book lover, and a Jesus follower.
-        </p>
-        <p>
-          At 13, I became fascinated with photography and editing. Then at the age of 15, my mom
-          encouraged me to start doing photo sessions for families we knew. That's where it all
-          began. I'm all about capturing the special moments in people's lives &mdash; it's my thing.
-        </p>
-        <p>
-          Storytelling is my favorite thing to partner with you in, and I am honored to help
-          document your life's most meaningful moments. I work with you to create a truly
-          memorable event, from how it looks to how it feels.
-        </p>
-        <a href="/contact" class="btn">Get in Touch</a>
-      </div>
-      <div class="about-desktop-photo reveal">
-        <img src={aboutImage} alt="Abbie, owner and photographer of Abigail Marie Photography" />
-      </div>
-    </div>
-  </section>
-
-  <section class="session-teaser-section family-teaser-section">
-    <div class="container about-grid">
-      <div class="reveal">
-        <img src={familyTeaserImage} alt="Siblings gathered around a baby during a family photography session" />
-      </div>
-      <div class="about-copy reveal">
-        <h2>Family Sessions</h2>
-        <p>
-          The giggles, the cuddles, the almost-everyone-looked-at-the-camera moments. Family
-          sessions are relaxed, playful, and focused on the connection you already have.
-        </p>
-        <a href="/packages" class="btn btn-accent">View Family Packages</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="session-teaser-section lifestyle-teaser-section">
-    <div class="container about-grid">
-      <div class="about-copy reveal">
-        <h2>Lifestyle Sessions</h2>
-        <p>
-          Soft, natural portraits for the seasons you want to remember exactly as they felt,
-          from motherhood and milestones to quiet everyday moments with your favorite people.
-        </p>
-        <a href="/gallery" class="btn">Plan a Session</a>
-      </div>
-      <div class="reveal">
+      <div class="service-work-pair reveal">
+        <img src={familyTeaserImage} alt="Young siblings running together outdoors during a family photography session" />
         <img src={lifestyleTeaserImage} alt="Parents cuddling their newborn during a lifestyle photography session" />
+      </div>
+      <div class="about-copy reveal">
+        <span class="service-teaser-kicker">Families, couples, proposals, minis, newborn days, motherhood, home</span>
+        <h2>Portrait &amp; Lifestyle Sessions</h2>
+        <p>
+          For families, couples, proposals, minis, motherhood, newborn days, and the seasons you
+          want to remember exactly as they felt. These sessions are relaxed and connection-led,
+          with room for real laughter, little details, and the quiet everyday moments that already
+          feel like you.
+        </p>
+        <div class="service-teaser-actions">
+          <a href="/gallery" class="btn">Plan a Session</a>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="session-teaser-section birth-teaser-section">
     <div class="container about-grid">
-      <div class="reveal">
-        <img src={birthTeaserImage} alt="Newborn resting beside birth announcement and ultrasound photos" />
+      <div class="service-work-pair reveal">
+        <img src={birthTeaserImage} alt="Emotional first moments after birth" />
+        <img src={birthTeaserAccentImage} alt="Newborn wrapped after birth" />
       </div>
       <div class="about-copy reveal">
-        <h2>Birth Photography</h2>
+        <span class="service-teaser-kicker">Pregnancy, birth, first hours</span>
+        <h2>Birth &amp; Maternity</h2>
         <p>
           From the last golden days of pregnancy to your baby's first breath, I'm honored to walk
           alongside you and capture the story of how your family grew.
@@ -118,4 +184,49 @@ const birthTeaserImage =
     </div>
   </section>
 
+  <section class="testimonial-section testimonial-section--home">
+    <div class="container testimonial-editorial reveal">
+      <div class="testimonial-editorial__images" aria-label="Jordan and Kaylee's photography session">
+        <img src={jordanReviewImages[0]} alt="Jordan and Kaylee during their portrait session" loading="lazy" />
+        <img src={jordanReviewImages[1]} alt="Jordan and Kaylee holding hands during their portrait session" loading="lazy" />
+      </div>
+      <figure class="testimonial-editorial__quote">
+        <span class="eyebrow-label">Kind Words</span>
+        <blockquote>
+          “My wife and I have had a couple different sessions throughout the years, but never one
+          as good as we got with Abbie! She made the experience a blast and we were absolutely
+          blown away by the final photos! Can’t recommend highly enough!”
+        </blockquote>
+        <figcaption>Jordan Peters</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="home-session-feel-section">
+    <div class="container home-session-feel reveal">
+      <div class="home-session-feel__copy">
+        <p class="eyebrow-label">What Sessions Feel Like</p>
+        <h2>Light direction. Real connection. Plenty of room to breathe.</h2>
+      </div>
+      <div class="home-session-feel__notes" aria-label="Session style notes">
+        <p>Gentle prompts when you need them.</p>
+        <p>Movement, snuggles, quiet details, and the in-between moments.</p>
+        <p>A pace that lets kids be kids and grown-ups unclench a little.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-final-cta-section">
+    <div class="container home-final-cta reveal">
+      <p class="eyebrow-label">Ready When You Are</p>
+      <h2>Tell me what season you want remembered.</h2>
+      <p>
+        Share what you are hoping for, who will be photographed, and any dates you already have in
+        mind. We will keep the first step simple.
+      </p>
+      <a href="/contact" class="btn btn-accent">Inquire With Abbie</a>
+    </div>
+  </section>
+
+  <NewbornPromo ctaHref="/birth-photography#birth-packages" revealOnScroll />
 </Layout>

@@ -1,0 +1,87 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import sessions from "../../data/smugmugGallery.json";
+
+export function getStaticPaths() {
+  const publicSessions = sessions.filter((session) => session.id !== "milestone-session-1");
+
+  return publicSessions.map((session, index) => ({
+    params: { id: session.id },
+    props: {
+      session,
+      previousSession: publicSessions[index - 1] ?? null,
+      nextSession: publicSessions[index + 1] ?? null,
+    },
+  }));
+}
+
+const { session, previousSession, nextSession } = Astro.props;
+const heroImage = session.images[0];
+const accentImage = session.images[1] ?? session.images[0];
+const portfolioImages = session.images.slice(2);
+---
+
+<Layout
+  title={session.title}
+  description={`${session.title} by Abigail Marie Photography.`}
+  bodyClass="gallery-page session-detail-page"
+>
+  <section class="session-detail-hero">
+    <div class="container session-detail-hero__inner">
+      <div class="session-detail-hero__copy reveal">
+        <a href="/gallery" class="gallery-story-link">Back to Portrait &amp; Lifestyle</a>
+        <span class="eyebrow-label">{session.eyebrow}</span>
+        <h1>{session.title}</h1>
+      </div>
+      <div class="session-detail-hero__art reveal">
+        <figure class="session-detail-hero__main">
+          <img src={heroImage} alt={`${session.title} featured image`} loading="eager" />
+        </figure>
+        <figure class="session-detail-hero__accent">
+          <img src={accentImage} alt={`${session.title} detail image`} loading="eager" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="session-detail-gallery">
+    <div class="container">
+      <div class="session-detail-masonry">
+        {
+          portfolioImages.map((src, index) => (
+            <figure>
+              <img src={src} alt={`${session.title} portfolio image ${index + 1}`} loading="lazy" />
+            </figure>
+          ))
+        }
+      </div>
+      <div class="cta-row reveal">
+        <a href="/contact" class="btn btn-accent">Plan Your Session</a>
+      </div>
+      <nav class="session-detail-nav reveal" aria-label="Browse sessions">
+        {
+          previousSession && (
+            <a class="session-detail-nav__link session-detail-nav__link--previous" href={`/gallery/${previousSession.id}`}>
+              <span class="session-detail-nav__arrow" aria-hidden="true"></span>
+              <span class="session-detail-nav__text">
+                <small>Previous Session</small>
+                <strong>{previousSession.title}</strong>
+              </span>
+            </a>
+          )
+        }
+        {
+          nextSession && (
+            <a class="session-detail-nav__link session-detail-nav__link--next" href={`/gallery/${nextSession.id}`}>
+              <span class="session-detail-nav__text">
+                <small>Next Session</small>
+                <strong>{nextSession.title}</strong>
+              </span>
+              <span class="session-detail-nav__arrow" aria-hidden="true"></span>
+            </a>
+          )
+        }
+      </nav>
+    </div>
+  </section>
+</Layout>

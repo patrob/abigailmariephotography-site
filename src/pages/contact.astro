@@ -2,22 +2,44 @@
 import Layout from "../layouts/Layout.astro";
 
 const heroImage =
-  "/images/img_0865.jpg";
+  "/images/805a1137.jpg";
+const heroAccentImage =
+  "/images/lifestyle-newborn-805a1182.jpg";
 
 const contactImage =
   "/images/contact-photo-abbie.jpg";
 
 const contactEmail =
   "info@abigailmariephotography.com";
+
 ---
 
-<Layout title="Contact" description="Get in touch with Abigail Marie Photography to book your family, lifestyle, or milestone session in San Antonio or New Braunfels.">
-  <section class="page-hero">
-    <img src={heroImage} alt="Contact hero" class="hero-image" />
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <p class="eyebrow">Let's Connect</p>
-      <h1>Contact</h1>
+<Layout
+  title="Contact"
+  description="Get in touch with Abigail Marie Photography to book your family, lifestyle, newborn, maternity, or birth session in San Antonio or New Braunfels."
+  bodyClass="contact-page"
+>
+  <section class="gallery-editorial-hero contact-editorial-hero">
+    <div class="container gallery-editorial-hero__inner">
+      <div class="gallery-editorial-hero__copy reveal">
+        <span class="eyebrow-label">Let's Connect</span>
+        <h1>
+          <span>Plan Your{" "}</span>
+          <span>Session</span>
+        </h1>
+        <p>
+          Tell me what season you want remembered, what drew you in, and the details you already
+          know. I will take it from there.
+        </p>
+      </div>
+      <div class="gallery-editorial-hero__art contact-editorial-hero__art reveal">
+        <figure class="gallery-editorial-hero__main">
+          <img src={heroImage} alt="Outdoor newborn session by Abigail Marie Photography" loading="eager" />
+        </figure>
+        <figure class="gallery-editorial-hero__offset">
+          <img src={heroAccentImage} alt="Lifestyle family session outdoors by Abigail Marie Photography" loading="eager" />
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -45,12 +67,20 @@ const contactEmail =
           <label for="sessionType">Session Type</label>
           <select id="sessionType" name="sessionType" required>
             <option value="">Select a session</option>
-            <option>Family</option>
-            <option>Lifestyle</option>
-            <option>Newborn</option>
-            <option>Maternity</option>
-            <option>Birth Photography</option>
-            <option>Milestone</option>
+            <optgroup label="Portrait &amp; Lifestyle">
+              <option>Full Sessions</option>
+              <option>Mini Sessions</option>
+              <option>Lifestyle Sessions</option>
+            </optgroup>
+            <optgroup label="Maternity">
+              <option>Full Maternity Session</option>
+              <option>Mini Maternity Session</option>
+            </optgroup>
+            <optgroup label="Birth">
+              <option>Essential Birth</option>
+              <option>Birth Story</option>
+              <option>Heirloom Birth</option>
+            </optgroup>
             <option>Other</option>
           </select>
         </div>
@@ -65,6 +95,10 @@ const contactEmail =
         <div>
           <label for="referralSource">How did you hear about me?</label>
           <input type="text" id="referralSource" name="referralSource" />
+        </div>
+        <div>
+          <label for="styleDraw">When it comes to my photography style, what drew you into my work?</label>
+          <textarea id="styleDraw" name="styleDraw" rows="4"></textarea>
         </div>
         <div>
           <label for="message">Tell me what you're dreaming of</label>

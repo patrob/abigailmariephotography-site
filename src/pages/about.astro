@@ -1,0 +1,136 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const portraitImage = "/images/about-abbie-maternity.jpg";
+const cameraImage = "/images/about-abbie-kids.jpg";
+const familyImage = "/images/805a0333.jpg";
+const newbornImage = "/images/805a0333.jpg";
+const notesImages = [
+  "/images/805a0333.jpg",
+  "/images/img_0865.jpg",
+  "/images/birth/birth-14.jpg",
+];
+
+const approach = [
+  {
+    title: "Comfort First",
+    text:
+      "I guide sessions gently so you know what to do, but I leave room for the real hugs, laughs, and tiny interruptions that make your photos feel like you.",
+  },
+  {
+    title: "Honest Color",
+    text:
+      "I am drawn to warm skin tones, soft light, and photographs that still feel true years from now.",
+  },
+  {
+    title: "Story Over Posing",
+    text:
+      "The finished gallery should feel like a little record of this season, not a checklist of perfect faces.",
+  },
+];
+---
+
+<Layout
+  title="About"
+  description="Meet Abbie of Abigail Marie Photography, a San Antonio and New Braunfels photographer for family, lifestyle, maternity, newborn, senior, milestone, and birth stories."
+  bodyClass="about-page"
+>
+  <section class="about-hero">
+    <div class="container about-hero__inner">
+      <div class="about-hero__copy reveal">
+        <span class="eyebrow-label">Meet Your Photographer</span>
+        <h1>
+          <span>Hi, I'm </span>
+          <span>Abbie.</span>
+        </h1>
+        <p>
+          I photograph family stories with a calm, sentimental eye: the little details, the
+          in-between looks, and the pieces of life you already know you never want to forget.
+        </p>
+        <a href="/contact" class="gallery-story-link">Plan Your Session</a>
+      </div>
+      <div class="about-hero__art reveal" aria-label="Portraits of Abbie and family photography details">
+        <figure class="about-hero__portrait">
+          <img src={portraitImage} alt="Abbie, owner and photographer of Abigail Marie Photography" loading="eager" />
+        </figure>
+        <figure class="about-hero__detail">
+          <img src={cameraImage} alt="Abbie with her two boys outdoors" loading="eager" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-story-section">
+    <div class="container about-story">
+      <div class="about-story__image reveal">
+        <img src={familyImage} alt="A family portrait session by Abigail Marie Photography" />
+      </div>
+      <div class="about-story__copy reveal">
+        <span class="eyebrow-label">How It Started</span>
+        <h2>The camera found me early.</h2>
+        <p>
+          I was born in Arizona, but I got to Texas as soon as I could. At 13, I became
+          fascinated with photography and editing. By 15, my mom encouraged me to start doing
+          photo sessions for families we knew, and that is where it all began.
+        </p>
+        <p>
+          More than 10 years later, I still love the same thing: helping families hold onto the
+          meaningful pieces of a season before it changes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-notes-section">
+    <div class="container about-notes about-notes--story">
+      <div class="about-notes__heading reveal">
+        <span class="eyebrow-label">A Little More</span>
+        <h2>Life behind the lens.</h2>
+      </div>
+      <div class="about-notes__story reveal">
+        <p>
+          I am Arizona-born and Texas-rooted, with more than 10 years of professional photography
+          experience and a deep love for preserving family stories.
+        </p>
+        <p>
+          My family and faith are the two most important things to me. These days, I am a
+          homeschool mom to my boys and loving it, and I also serve on the photo team at my
+          church, where I get to use my gifts in a way that feels close to home.
+        </p>
+      </div>
+      <div class="about-notes__images reveal" aria-label="Family, lifestyle, and birth photography by Abigail Marie Photography">
+        {notesImages.map((src) => <img src={src} alt="" loading="lazy" />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="about-approach-section">
+    <div class="container about-approach">
+      <div class="about-approach__copy reveal">
+        <span class="eyebrow-label">My Approach</span>
+        <h2>Photographs that feel lived in.</h2>
+        <p>
+          Storytelling is my favorite thing to partner with you in. I want the process to feel
+          thoughtful and easy, from how the session looks to how it feels while we are making it.
+        </p>
+      </div>
+      <div class="about-approach__image reveal">
+        <img src={newbornImage} alt="Siblings gathered around a baby during an outdoor lifestyle session" />
+      </div>
+      <div class="about-approach__cards">
+        {
+          approach.map((item) => (
+            <article class="about-approach-card reveal">
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))
+        }
+      </div>
+      <div class="about-bottom-action reveal">
+        <a href="/contact" class="btn btn-accent">Plan Your Session</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
