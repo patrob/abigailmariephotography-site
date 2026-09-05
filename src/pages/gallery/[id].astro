@@ -32,6 +32,9 @@ const portfolioImages = session.images.slice(2);
         <a href="/gallery" class="gallery-story-link">Back to Portrait &amp; Lifestyle</a>
         <span class="eyebrow-label">{session.eyebrow}</span>
         <h1>{session.title}</h1>
+        {session.locationLine && (
+          <span class="eyebrow-label session-detail-hero__location">{session.locationLine}</span>
+        )}
       </div>
       <div class="session-detail-hero__art reveal">
         <figure class="session-detail-hero__main">
